@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="ベックス,お問い合わせ,BEX">
+    <meta name="Description" content="株式会社ベックスへのお問い合わせはこちらから。">
+    <title>お問い合わせ | 株式会社 ベックス</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="kyouiku.html" class="dropdown-item">教育関連設備</a></li>
+                            <li><a href="jyohotsushin.html" class="dropdown-item">情報通信設備</a></li>
+                            <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響設備</a></li>
+                            <li><a href="ippan.html" class="dropdown-item">一般放送設備</a></li>
+                            <li><a href="vm1.html" class="dropdown-item">各種スクリーン</a></li>
+                            <li><a href="order.html" class="dropdown-item">特注品製作</a></li>
+                            <li><a href="office.html" class="dropdown-item">オフィス家具・内装</a></li>
+                            <li><a href="consumer.html" class="dropdown-item">家電品販売</a></li>
+                            <li><a href="bousai.html" class="dropdown-item">防災関連</a></li>
+                            <li><a href="hosyu.html" class="dropdown-item">システム保守点検</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
+                            <li><a href="system.html" class="dropdown-item">会社案内</a></li>
+                            <li><a href="concept_3.html" class="dropdown-item">導入実績</a></li>
+                            <li><a href="recruitment.html" class="dropdown-item">採用情報</a></li>
+                            <li><a href="privacy.html" class="dropdown-item">個人情報保護方針</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero">
+        <div class="hero-bg" style="background-image: url('images/hero_contact.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Contact Us</h1>
+                <p class="hero-desc">お問い合わせ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Layout -->
+    <main class="main-content">
+        <div class="container contact-container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">お問い合わせフォーム</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: var(--color-text-muted);">
+                システム導入に関するご相談や、当社サービスに関するご質問など、お気軽にお問い合わせください。
+            </p>
+            
+            <form action="#" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="company">貴社名・団体名</label>
+                    <input type="text" id="company" name="company" placeholder="例: 株式会社ベックス">
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">お名前 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="例: 山田 太郎">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="例: info@bex.co.jp">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tel">電話番号</label>
+                    <input type="tel" id="tel" name="tel" placeholder="例: 03-3252-0900">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                    <textarea id="message" name="message" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem; border: none; cursor: pointer;">送信する</button>
+                </div>
+            </form>
+
+            <div class="contact-info-block">
+                <h3>お電話・FAXでのお問い合わせ</h3>
+                <p><strong>TEL:</strong> 03-3252-0900</p>
+                <p><strong>FAX:</strong> 03-3252-0910</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">受付時間: 平日 9:00〜18:00 (土日祝日除く)</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                </div>
+                <p>〒101-0044 東京都千代田区鍛冶町1-9-16</p>
+                <p>TEL: 03-3252-0900</p>
+                <p>Email: info@bex.co.jp</p>
+            </div>
+            <div class="footer-col footer-links">
+                <h4>事業内容</h4>
+                <ul>
+                    <li><a href="kyouiku.html">教育関連設備</a></li>
+                    <li><a href="jyohotsushin.html">情報通信設備</a></li>
+                    <li><a href="eizoonkyo.html">映像・音響設備</a></li>
+                    <li><a href="hosyu.html">保守点検サービス</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-links">
+                <h4>会社情報</h4>
+                <ul>
+                    <li><a href="concept.html">企業コンセプト</a></li>
+                    <li><a href="system.html">会社案内</a></li>
+                    <li><a href="recruitment.html">採用情報</a></li>
+                    <li><a href="privacy.html">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; BEX Co.,Ltd. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Script for sticky header -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
