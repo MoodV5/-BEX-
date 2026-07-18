@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://MoodV5.github.io/-BEX-/sitemap.xml
