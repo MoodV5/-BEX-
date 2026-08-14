@@ -2,24 +2,30 @@
 
 :root {
     /* AVSystem Inspired Color Palette */
-    --color-primary: #0066cc; /* Bright tech blue */
-    --color-primary-hover: #0052a3;
-    --color-bg-dark: #0f0f10; /* Very dark charcoal/black */
-    --color-bg-light: #f8fafc; /* Very light gray/white */
+    --color-primary: #1A75FF;
+    /* Bright tech blue */
+    --primary: var(--color-primary);
+    /* Fallback/Alias for HTML inline styles */
+    --color-primary-hover: #005ce6;
+    --color-bg-dark: #001a33;
+    /* Very dark charcoal/black */
+    --color-bg-light: #f8fafc;
+    /* Very light gray/white */
     --color-bg-white: #ffffff;
     --color-text-dark: #1e293b;
     --color-text-light: #f1f5f9;
     --color-text-muted: #64748b;
     --color-border: #e2e8f0;
-    --color-accent: #e11d48; /* Magenta/red accent */
+    --color-accent: #e11d48;
+    /* Magenta/red accent */
 
     --font-primary: 'Inter', 'Roboto', 'Noto Sans JP', sans-serif;
-    
+
     --nav-height: 80px;
     --border-radius: 12px;
     --border-radius-pill: 9999px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -57,7 +63,10 @@ a:hover {
 /* =========================================
    Typography
 ========================================= */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-weight: 700;
     line-height: 1.2;
     color: var(--color-text-dark);
@@ -199,7 +208,8 @@ h1, h2, h3, h4 {
 .nav-link {
     font-weight: 500;
     font-size: 1rem;
-    color: var(--color-text-light); /* White on dark hero */
+    color: var(--color-text-light);
+    /* White on dark hero */
     padding: 0.5rem 0;
     display: flex;
     align-items: center;
@@ -207,7 +217,8 @@ h1, h2, h3, h4 {
 }
 
 .site-header.scrolled .nav-link {
-    color: var(--color-text-dark); /* Dark on scrolled white header */
+    color: var(--color-text-dark);
+    /* Dark on scrolled white header */
 }
 
 .nav-link:hover {
@@ -229,6 +240,17 @@ h1, h2, h3, h4 {
     transition: var(--transition);
     padding: 1rem 0;
     list-style: none;
+}
+
+/* Prevent the last dropdown from overflowing the right edge */
+.nav-item:last-child .dropdown-menu {
+    left: auto;
+    right: -20px;
+    transform: translateX(0) translateY(10px);
+}
+
+.nav-item:last-child:hover .dropdown-menu {
+    transform: translateX(0) translateY(0);
 }
 
 .nav-item:hover .dropdown-menu {
@@ -263,16 +285,81 @@ h1, h2, h3, h4 {
     overflow: hidden;
 }
 
-.hero-bg {
+.hero-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-slider-track {
+    display: flex;
+    width: 100%;
+    /* Will hold multiple 100% width slides */
+    height: 100%;
+    /* Transition is handled by JavaScript */
+}
+
+.hero-slider-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0.85;
-    z-index: 1;
+}
+
+/* Slider Controls */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.slider-prev {
+    left: 20px;
+}
+
+.slider-next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.slider-dot.active {
+    background: white;
+    transform: scale(1.2);
 }
 
 .hero-overlay {
@@ -281,7 +368,7 @@ h1, h2, h3, h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(15,15,16,0.8) 0%, rgba(15,15,16,0.2) 100%);
+    background: linear-gradient(135deg, rgba(15, 15, 16, 0.8) 0%, rgba(15, 15, 16, 0.2) 100%);
     z-index: 2;
 }
 
@@ -399,7 +486,8 @@ h1, h2, h3, h4 {
     margin-bottom: 2rem;
 }
 
-.modern-table th, .modern-table td {
+.modern-table th,
+.modern-table td {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--color-border);
     text-align: left;
@@ -479,25 +567,49 @@ h1, h2, h3, h4 {
 /* =========================================
    Utility
 ========================================= */
-.text-primary { color: var(--color-primary); }
-.text-center { text-align: center; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-4 { margin-top: 1rem; }
-.mt-8 { margin-top: 2rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-8 { margin-bottom: 2rem; }
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .nav-list {
-        display: none; /* Mobile menu requires JS toggling, hiding for simplicity in this pure CSS redesign without JS */
+        display: none;
+        /* Mobile menu requires JS toggling, hiding for simplicity in this pure CSS redesign without JS */
     }
-    
+
     .grid-2 {
         grid-template-columns: 1fr;
     }
@@ -574,4 +686,369 @@ h1, h2, h3, h4 {
 .contact-info-block p {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   Phase 2 Top Page Domains
+========================================= */
+.domains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.domain-card {
+    background: var(--color-bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--color-text-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+.domain-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.domain-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.domain-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.domain-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.email-cta-box {
+    background: linear-gradient(135deg, #001a33, #004080);
+    /* Premium rich dark blue gradient */
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin: 4rem 0 0 0;
+    box-shadow: 0 10px 30px rgba(0, 26, 51, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow effect for premium feel */
+.email-cta-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.email-cta-box h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    /* Explicitly set to white */
+    position: relative;
+    z-index: 1;
+}
+
+.email-cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    color: #ffffff;
+    /* Explicitly set to white */
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   WOW Animations (Scroll Reveal & Effects)
+========================================= */
+
+/* 1. Glowing Gradient Text for Hero Title */
+.hero-title-animated {
+    background: linear-gradient(to right, #ffffff, #a3c2ff, #ffffff);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* 2. Scroll Reveal (Fade In Up) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Staggered delay for grid items */
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* 4. Interactive Card Glow (Hover Follow Effect) */
+.glow-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    /* slight transparency for glassmorphism */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glow-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(26, 117, 255, 0.08),
+            transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.glow-card:hover::before {
+    opacity: 1;
+}
+
+/* Ensure card contents sit above the glow */
+.glow-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* 4. Advanced Hover Effect for Domain Cards */
+.domain-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.domain-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(26, 117, 255, 0.15), 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.domain-card:hover .domain-img {
+    transform: scale(1.08);
+}
+
+.domain-img-wrapper {
+    overflow: hidden;
+    width: 100%;
+    height: 180px;
+}
+
+.domain-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* =========================================
+   UI/UX Nav Improvements (Nielsen's Heuristics)
+========================================= */
+
+/* Header Contact Button */
+.header-contact-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-left: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 51, 153, 0.2);
+}
+
+.header-contact-btn:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 51, 153, 0.3);
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    padding: 15px 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.85rem;
+}
+
+.breadcrumbs .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+.breadcrumbs span {
+    margin: 0 10px;
+    color: #999;
+}
+
+.breadcrumbs .current {
+    color: var(--color-text-muted);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-5px);
+    color: white;
+}
+
+/* Closing CTA */
+.closing-cta {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+    margin-top: 4rem;
+}
+
+.closing-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.closing-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.closing-cta .btn {
+    background-color: white;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.closing-cta .btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+}
+
+/* Better Affordance (Hover) */
+.footer-links a {
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-secondary);
+    transform: translateX(5px);
+}
+
+.footer-links a::after {
+    content: '➔';
+    font-size: 0.8em;
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover::after {
+    opacity: 1;
 }
