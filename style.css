@@ -7,8 +7,8 @@
     --primary: var(--color-primary);
     /* Fallback/Alias for HTML inline styles */
     --color-primary-hover: #005ce6;
-    --color-bg-dark: #001a33;
-    /* Very dark charcoal/black */
+    --color-bg-dark: #0d2b4e;
+    /* Dark navy (lightened) */
     --color-bg-light: #f8fafc;
     /* Very light gray/white */
     --color-bg-white: #ffffff;
@@ -362,13 +362,24 @@ h4 {
     transform: scale(1.2);
 }
 
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(15, 15, 16, 0.8) 0%, rgba(15, 15, 16, 0.2) 100%);
+    background: linear-gradient(135deg, rgba(15, 15, 16, 0.55) 0%, rgba(15, 15, 16, 0.1) 100%);
     z-index: 2;
 }
 
@@ -378,6 +389,7 @@ h4 {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    padding: 0 4rem;
 }
 
 .hero-text {
@@ -601,6 +613,10 @@ h4 {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .hero-content {
+        padding: 0 2rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -740,8 +756,8 @@ h4 {
 }
 
 .email-cta-box {
-    background: linear-gradient(135deg, #001a33, #004080);
-    /* Premium rich dark blue gradient */
+    background: linear-gradient(135deg, #1a5cb5, #2980d9);
+    /* Brighter blue gradient */
     color: white;
     padding: 4rem 2rem;
     border-radius: var(--border-radius);
