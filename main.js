@@ -8,26 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* 1. Dynamic Sticky Header Animation */
     const header = document.querySelector('.site-header');
-    const logoImg = document.querySelector('.logo img');
-    
-    // Set initial transition styles
-    if (header) header.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    if (logoImg) logoImg.style.transition = 'all 0.4s ease';
+    const headerInner = header?.querySelector('.header-inner');
+    const mainNav = header?.querySelector('.main-nav');
+
+    // Keep the contact route visible on detail pages that use the older header markup.
+    if (mainNav && !mainNav.querySelector('.header-contact-btn')) {
+        const contactLink = document.createElement('a');
+        contactLink.href = 'contact.html';
+        contactLink.className = 'header-contact-btn';
+        contactLink.innerHTML = 'お問い合わせ <span aria-hidden="true">↗</span>';
+        mainNav.appendChild(contactLink);
+    }
+
+    // Shared mobile navigation for the top page and existing detail pages.
+    if (headerInner && mainNav && !headerInner.querySelector('.menu-toggle')) {
+        const menuToggle = document.createElement('button');
+        menuToggle.type = 'button';
+        menuToggle.className = 'menu-toggle';
+        menuToggle.setAttribute('aria-label', 'メニューを開く');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '<span></span>';
+        headerInner.insertBefore(menuToggle, mainNav);
+
+        const closeMenu = () => {
+            mainNav.classList.remove('is-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'メニューを開く');
+        };
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeMenu();
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 860) closeMenu();
+        });
+    }
 
     function updateHeaderState() {
-        if (window.scrollY > 50) {
-            if (header) {
-                header.classList.add('scrolled');
-                header.style.padding = '0.5rem 0';
-            }
-            if(logoImg) logoImg.style.height = '35px'; // Shrink logo slightly
-        } else {
-            if (header) {
-                header.classList.remove('scrolled');
-                header.style.padding = '1rem 0';
-            }
-            if(logoImg) logoImg.style.height = '45px'; // Original size
-        }
+        if (header) header.classList.toggle('scrolled', window.scrollY > 50);
     }
     
     window.addEventListener('scroll', updateHeaderState);
@@ -47,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         right: '30px',
         width: '50px',
         height: '50px',
-        backgroundColor: '#003399', // Primary color
+        backgroundColor: '#0d2b4e',
         color: 'white',
         borderRadius: '50%',
         display: 'flex',
@@ -55,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alignItems: 'center',
         fontSize: '1.5rem',
         textDecoration: 'none',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.2)',
+        boxShadow: '0 6px 18px rgba(13,43,78,0.2)',
         opacity: '0',
         visibility: 'hidden',
         transform: 'translateY(20px)',
@@ -65,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Hover effect
     backToTop.addEventListener('mouseenter', () => {
-        backToTop.style.backgroundColor = '#0055ff';
+        backToTop.style.backgroundColor = '#1a73e8';
         backToTop.style.transform = 'translateY(-5px) scale(1.1)';
     });
     backToTop.addEventListener('mouseleave', () => {
-        backToTop.style.backgroundColor = '#003399';
+        backToTop.style.backgroundColor = '#0d2b4e';
         backToTop.style.transform = 'translateY(0) scale(1)';
     });
 
@@ -118,8 +143,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* 5. Top-page documentary image slider */
+    const slider = document.getElementById('heroSlider');
+    const sliderTrack = document.getElementById('heroSliderTrack');
+    const slides = sliderTrack ? Array.from(sliderTrack.children) : [];
+    const previousButton = document.getElementById('sliderPrev');
+    const nextButton = document.getElementById('sliderNext');
+    const dotsContainer = document.getElementById('sliderDots');
+
+    if (slider && sliderTrack && slides.length > 0) {
+        let currentSlide = 0;
+        let autoplayTimer;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const dots = slides.map((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'slider-dot';
+            dot.setAttribute('aria-label', `${index + 1}枚目の画像を表示`);
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                restartAutoplay();
+            });
+            dotsContainer?.appendChild(dot);
+            return dot;
+        });
+
+        const showSlide = index => {
+            currentSlide = (index + slides.length) % slides.length;
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, dotIndex) => {
+                const isCurrent = dotIndex === currentSlide;
+                dot.classList.toggle('active', isCurrent);
+                dot.setAttribute('aria-current', isCurrent ? 'true' : 'false');
+            });
+        };
+
+        const stopAutoplay = () => window.clearInterval(autoplayTimer);
+        const startAutoplay = () => {
+            if (!reduceMotion && slides.length > 1) {
+                stopAutoplay();
+                autoplayTimer = window.setInterval(() => showSlide(currentSlide + 1), 6500);
+            }
+        };
+        const restartAutoplay = () => {
+            stopAutoplay();
+            startAutoplay();
+        };
+
+        previousButton?.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            restartAutoplay();
+        });
+        nextButton?.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            restartAutoplay();
+        });
+        slider.parentElement?.addEventListener('mouseenter', stopAutoplay);
+        slider.parentElement?.addEventListener('mouseleave', startAutoplay);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopAutoplay();
+            else startAutoplay();
+        });
+
+        showSlide(0);
+        startAutoplay();
+    }
+
     /* ======================================================================
-       5. Network Canvas Animation (Interactive Particle System)
+       6. Network Canvas Animation (Interactive Particle System)
        ====================================================================== */
     const canvas = document.getElementById('network-canvas');
     if (canvas) {
@@ -225,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ======================================================================
-       6. Scroll Reveal (Intersection Observer)
+       7. Scroll Reveal (Intersection Observer)
        ====================================================================== */
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -240,7 +332,71 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => revealObserver.observe(el));
 
     /* ======================================================================
-       7. Interactive Card Glow (Hover Effects)
+       8. Progressive page and scroll motion
+       ====================================================================== */
+    const reducePageMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionGroups = [
+        document.querySelectorAll('.intro-grid > *'),
+        document.querySelectorAll('.fact-grid > *'),
+        document.querySelectorAll('.section-heading-row > *'),
+        document.querySelectorAll('.process-grid > *'),
+        document.querySelectorAll('.maintenance-grid > *'),
+        document.querySelectorAll('.contact-cta > *'),
+        document.querySelectorAll('body:not(.home-page) .content-card'),
+        document.querySelectorAll('body:not(.home-page) .grid-2 > *'),
+        document.querySelectorAll('body:not(.home-page) .grid-3 > *')
+    ];
+
+    if (!reducePageMotion && 'IntersectionObserver' in window) {
+        document.body.classList.add('motion-ready');
+        const motionTargets = new Set();
+
+        motionGroups.forEach(group => {
+            group.forEach((element, index) => {
+                element.classList.add('scroll-animate');
+                element.style.setProperty('--motion-delay', `${Math.min(index, 4) * 80}ms`);
+                motionTargets.add(element);
+            });
+        });
+
+        document.querySelectorAll('.maintenance-media').forEach(element => {
+            element.classList.add('motion-image');
+        });
+
+        const motionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+
+        motionTargets.forEach(element => motionObserver.observe(element));
+
+        const homeHero = document.querySelector('.home-hero');
+        if (homeHero) {
+            let heroMotionFrame = null;
+            const updateHeroMotion = () => {
+                const heroRect = homeHero.getBoundingClientRect();
+                if (heroRect.bottom > 0) {
+                    const distance = Math.min(window.scrollY * 0.09, 48);
+                    homeHero.style.setProperty('--hero-parallax', `${distance}px`);
+                }
+                heroMotionFrame = null;
+            };
+
+            window.addEventListener('scroll', () => {
+                if (heroMotionFrame === null) {
+                    heroMotionFrame = window.requestAnimationFrame(updateHeroMotion);
+                }
+            }, { passive: true });
+            updateHeroMotion();
+        }
+    }
+
+    /* ======================================================================
+       9. Interactive Card Glow (Hover Effects)
        ====================================================================== */
     const glowCards = document.querySelectorAll('.glow-card');
     glowCards.forEach(card => {
