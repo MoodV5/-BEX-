@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <meta name="Keywords" content="ベックス,株式会社ベックス,BEX,映像,音響,コンピューターシステム,AV,CALL教室,視聴覚教室,遠隔講義,監視カメラ,防犯カメラ,電子掲示板,デジタルサイネージ,放送設備,緊急地震速報">
-    <meta name="Description" content="株式会社ベックスの会社情報、経営理念、代表挨拶をご紹介します。AV＆ITシステムでさまざまな施設をトータルにサポートします。">
-    <title>会社情報 | 株式会社 ベックス</title>
+    <meta name="Description" content="株式会社ベックスの会社情報、経営理念、代表挨拶をご紹介します。AV・ICTシステムで、さまざまな施設を総合的にサポートします。">
+    <title>会社情報 | 株式会社ベックス</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260831-10">
+    <link rel="stylesheet" href="style.css?v=20260904-14">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://MoodV5.github.io/-BEX-/concept.html">
-    <meta property="og:site_name" content="株式会社 ベックス">
-    <meta property="og:title" content="会社情報 | 株式会社 ベックス">
-    <meta property="og:description" content="株式会社ベックスの会社情報、経営理念、代表挨拶をご紹介します。AV＆ITシステムでさまざまな施設をトータルにサポートします。">
+    <meta property="og:site_name" content="株式会社ベックス">
+    <meta property="og:title" content="会社情報 | 株式会社ベックス">
+    <meta property="og:description" content="株式会社ベックスの会社情報、経営理念、代表挨拶をご紹介します。AV・ICTシステムで、さまざまな施設を総合的にサポートします。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://MoodV5.github.io/-BEX-/concept.html">
     <meta property="og:image" content="https://MoodV5.github.io/-BEX-/images/hero_index.jpg">
@@ -34,13 +35,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                     <li class="nav-item">
-                        <a href="index.html#business" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="index.html#business" class="nav-link">事業内容 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響・表示系</a></li>
                             <li><a href="bousai.html" class="dropdown-item">安全・防災・監視系</a></li>
@@ -50,7 +51,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="concept.html" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="concept.html" class="nav-link">会社情報 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">会社案内</a></li>
@@ -68,9 +69,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">会社情報 | <span style="white-space: nowrap;">株式会社 ベックス</span></h1>
-                <p class="hero-desc">革新的なテクノロジーでビジネスの未来を形作ります。</p>
-                <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
+                <h1 class="hero-title">会社情報 | <span class="hero-company-name">株式会社ベックス</span></h1>
+                <p class="hero-desc">技術と誠実な対応で、お客様の目的に合ったシステムを構築します。</p>
+                <a href="contact.html" class="btn btn-primary contact-button">お問い合わせ<span class="contact-button__frame" aria-hidden="true"></span></a>
             </div>
         </div>
     </section>
@@ -81,7 +82,7 @@
             <section class="system-solutions">
                 <h3 class="section-title">経営理念</h3>
                 <p class="section-subtitle">CONCEPT</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
+                <div class="service-panel">
                     <p style="font-size: 1.2rem; font-weight: 600; line-height: 2; color: var(--color-text-dark);">
                         お客様の目的に最適な“空間と体験”を創り、<br>
                         安心して使い続けられるシステムを提供すること。<br>
@@ -90,17 +91,17 @@
                     </p>
                 </div>
                 
-                <h3 class="section-title" style="margin-top: 4rem;">ご挨拶</h3>
+                <h3 class="section-title section-title--spaced">ご挨拶</h3>
                 <p class="section-subtitle">Greeting</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem;">我がベックスは、音響・映像・ＩＴ機器を取り入れた各種システムを長きにわたって構築し着実に成長を続け、今もなお一層の飛躍の時を迎えております。</p>
-                    <p style="margin-bottom: 1.5rem;">これもひとえに多くのお客様、メーカー様、協力会社様の皆様の変わらぬご支援、ご指導の賜と、ここにあらためて日々感謝しております。</p>
-                    <p style="margin-bottom: 2rem;">これからも今日まで培った技術力を更に発揮させて頂き、お客様とのより強い信頼関係を創りあげていけますよう、「打てば響く」の精神で、お客様対応を社員一丸となって邁進して参ります。<br>
-                    ぜひ、今後とも変わらないご支援ご愛顧を賜りますようお願い申し上げます。</p>
-                    <p style="text-align: right; font-weight: bold; font-size: 1.1rem; color: var(--primary);">代表取締役　室野井 秀夫</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem;">当社は、音響・映像・ICT機器を活用した各種システムを長年にわたり構築し、着実に実績を重ねてまいりました。</p>
+                    <p style="margin-bottom: 1.5rem;">これもひとえに、お客様をはじめ、メーカーや協力会社の皆様から賜りましたご支援とご指導の賜物です。心より感謝申し上げます。</p>
+                    <p style="margin-bottom: 2rem;">今後も、これまで培ってきた技術力をさらに磨き、お客様とのより強い信頼関係を築いてまいります。「打てば響く」の精神のもと、社員一丸となって誠実かつ迅速な対応に努めます。<br>
+                    今後とも変わらぬご支援とご愛顧を賜りますよう、お願い申し上げます。</p>
+                    <p style="text-align: right; font-weight: bold; font-size: 1.1rem; color: var(--primary);">代表取締役　室野井秀夫</p>
 
                     <!-- Shiitake Banner CSS Component -->
-                    <div class="shiitake-banner" style="border: 4px solid #bba36d; background: #fff; padding: 2rem 3rem; margin: 4rem 0 2rem; font-family: 'Noto Serif JP', serif; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative;">
+                    <div class="shiitake-banner">
                         <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #ddd; padding-bottom: 1rem; margin-bottom: 2.5rem; color: #2c3e50;">
                             <span style="font-size: 1.5rem; font-weight: 700; font-style: italic; letter-spacing: 2px;">社長の一言！</span>
                             <span style="font-size: 1.3rem;">日々、しいたけの精神で頑張ろう！</span>
@@ -126,38 +127,93 @@
                     </div>
                 </div>
 
-                <h3 class="section-title" style="margin-top: 4rem;">会社概要</h3>
-                <p class="section-subtitle">Overview</p>
-                <div style="background: var(--white); border-radius: 16px; box-shadow: var(--shadow-sm); overflow: hidden;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                            <th style="padding: 1.5rem; background: var(--bg-color); width: 30%; text-align: left; color: var(--primary);">会社名</th>
-                            <td style="padding: 1.5rem;">株式会社ベックス (BEX Co., Ltd.)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                            <th style="padding: 1.5rem; background: var(--bg-color); width: 30%; text-align: left; color: var(--primary);">所在地</th>
-                            <td style="padding: 1.5rem;">〒170-0003 東京都豊島区駒込2-3-1 六興ビル 5F</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                            <th style="padding: 1.5rem; background: var(--bg-color); width: 30%; text-align: left; color: var(--primary);">電話番号</th>
-                            <td style="padding: 1.5rem;">03-5980-0822</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                            <th style="padding: 1.5rem; background: var(--bg-color); width: 30%; text-align: left; color: var(--primary);">FAX</th>
-                            <td style="padding: 1.5rem;">03-5980-0877</td>
-                        </tr>
-                    </table>
-                </div>
+                <section class="company-section" aria-labelledby="company-profile-title">
+                    <h3 class="section-title section-title--spaced" id="company-profile-title">会社概要</h3>
+                    <p class="section-subtitle">COMPANY PROFILE</p>
+                    <div class="company-profile">
+                        <dl>
+                            <div class="company-profile__row">
+                                <dt>商号</dt>
+                                <dd>株式会社ベックス</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>代表者</dt>
+                                <dd>代表取締役　室野井秀夫</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>所在地</dt>
+                                <dd>
+                                    <span>〒170-0003　東京都豊島区駒込2-3-1 六興ビル5F</span>
+                                    <a class="company-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%B1%8A%E5%B3%B6%E5%8C%BA%E9%A7%92%E8%BE%BC2-3-1" target="_blank" rel="noopener noreferrer">Google Map <span aria-hidden="true">↗</span></a>
+                                </dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>連絡先</dt>
+                                <dd>TEL 03-5980-0822　／　FAX 03-5980-0877</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>資本金</dt>
+                                <dd>授権資本金 3,000万円　／　払込済資本金 2,000万円</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>創立</dt>
+                                <dd>昭和35年12月20日</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>取引銀行</dt>
+                                <dd>三井住友銀行 新宿通支店　／　みずほ銀行 新宿支店</dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>業務内容</dt>
+                                <dd>
+                                    <ul class="company-business-list">
+                                        <li>放送用映像設備・ビデオスタジオ設備・CATV設備</li>
+                                        <li>テレビ会議システム・LL設備・CAI設備・CALL設備・視聴覚AV設備</li>
+                                        <li>各種PA装置などに付帯する設備の設計・販売・施工・保守</li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="company-profile__row">
+                                <dt>業種</dt>
+                                <dd>電気通信工事業・消防施設工事業・電気工事業</dd>
+                            </div>
+                        </dl>
+                    </div>
+                </section>
+
+                <section class="company-section" aria-labelledby="company-history-title">
+                    <h3 class="section-title section-title--spaced" id="company-history-title">会社沿革</h3>
+                    <p class="section-subtitle">HISTORY</p>
+                    <div class="company-history">
+                        <ol>
+                            <li>
+                                <time datetime="1960-12-20">昭和35年</time>
+                                <p>音響施設株式会社として設立</p>
+                            </li>
+                            <li>
+                                <time datetime="1986">昭和61年</time>
+                                <p>社名を株式会社ベックスに変更</p>
+                            </li>
+                            <li>
+                                <time datetime="1994">平成6年</time>
+                                <p>東京都新宿区大久保1-2-9へ本社を移転</p>
+                            </li>
+                            <li>
+                                <time datetime="2012">平成24年</time>
+                                <p>東京都豊島区駒込2-3-1 六興ビル5Fへ本社を移転</p>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
             </section>
-                </div>
-            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                    <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
                 </div>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1<br>六興ビル 5F</p>
                 <p>TEL 03-5980-0822</p>
@@ -190,16 +246,7 @@
 
 
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.site-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>    <script src="main.js?v=20260831-3"></script>
+    <script src="main.js?v=20260904-7"></script>
 </body>
 
 </html>

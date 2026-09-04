@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <meta name="Keywords" content="ベックス,株式会社ベックス,オフィス家具,タイルカーペット,オフィスレイアウト,デスク,キャビネット">
-    <meta name="Description" content="株式会社ベックスのオフィス家具販売について。機能的で快適なオフィスレイアウトをご提案します。">
-    <title>オフィス家具 | 株式会社 ベックス</title>
+    <meta name="Description" content="株式会社ベックスのオフィス家具販売についてご紹介します。機能的で快適なオフィスレイアウトをご提案します。">
+    <title>オフィス家具 | 株式会社ベックス</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260831-10">
+    <link rel="stylesheet" href="style.css?v=20260904-14">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://MoodV5.github.io/-BEX-/office.html">
-    <meta property="og:site_name" content="株式会社 ベックス">
-    <meta property="og:title" content="オフィス家具 | 株式会社 ベックス">
-    <meta property="og:description" content="株式会社ベックスのオフィス家具販売について。機能的で快適なオフィスレイアウトをご提案します。">
+    <meta property="og:site_name" content="株式会社ベックス">
+    <meta property="og:title" content="オフィス家具 | 株式会社ベックス">
+    <meta property="og:description" content="株式会社ベックスのオフィス家具販売についてご紹介します。機能的で快適なオフィスレイアウトをご提案します。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://MoodV5.github.io/-BEX-/office.html">
     <meta property="og:image" content="https://MoodV5.github.io/-BEX-/images/hero_index.jpg">
@@ -33,13 +35,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                     <li class="nav-item">
-                        <a href="index.html#business" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="index.html#business" class="nav-link">事業内容 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響・表示系</a></li>
                             <li><a href="bousai.html" class="dropdown-item">安全・防災・監視系</a></li>
@@ -49,7 +51,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="concept.html" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="concept.html" class="nav-link">会社情報 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">会社案内</a></li>
@@ -67,9 +69,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">オフィス家具 | <span style="white-space: nowrap;">株式会社 ベックス</span></h1>
-                <p class="hero-desc">革新的なテクノロジーでビジネスの未来を形作ります。</p>
-                <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
+                <h1 class="hero-title">オフィス家具 | <span class="hero-company-name">株式会社ベックス</span></h1>
+                <p class="hero-desc">働き方と空間に合わせて、機能的なオフィス環境をご提案します。</p>
+                <a href="contact.html" class="btn btn-primary contact-button">お問い合わせ<span class="contact-button__frame" aria-hidden="true"></span></a>
             </div>
         </div>
     </section>
@@ -80,34 +82,33 @@
                 
                 <h3 class="section-title">オフィス家具</h3>
                 <p class="section-subtitle">Office Furniture</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem;">オフィスレイアウトには、社員のコミュニケーションの活性化など、大きな影響力があります。デスク、イス、パーティション、キャビネットなど機能的な空間を作ることが、社員のモチベーションアップにつながります。</p>
-                    <p style="margin-bottom: 1.5rem;">お客様の様々な環境に応じた空間づくりを企画・ご提案させていただきます。</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem;">オフィスレイアウトは、社員同士のコミュニケーションや働きやすさに大きく影響します。デスク、イス、パーティション、キャビネットなどを適切に配置し、機能的な空間をつくることが、快適な職場環境につながります。</p>
+                    <p style="margin-bottom: 1.5rem;">お客様の環境や働き方に応じた空間づくりを企画・提案します。</p>
                     <ul style="list-style: none; padding-left: 0; color: var(--text-color);">
                         <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> デスク</li>
                         <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> イス</li>
                         <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> パーティション</li>
-                        <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> キャビネット など多数</li>
+                        <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> キャビネットなど</li>
                     </ul>
                 </div>
 
                 <h3 class="section-title">タイルカーペット</h3>
                 <p class="section-subtitle">Tile Carpet</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem;">見た目だけでなく、機能面も備えています。</p>
-                    <p>汚れた部分だけを洗ったり、取り替えたりすることができるので、メンテナンスが簡単です。また、防音、防炎、防汚、制電など様々な機能を持つカーペットを取り揃えております。</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem;">タイルカーペットは、意匠性に加えて多様な機能を備えています。</p>
+                    <p>汚れた部分だけを洗浄・交換できるため、メンテナンスも容易です。防音、防炎、防汚、制電など、さまざまな機能を持つ製品を取り揃えています。</p>
                 </div>
 
             </section>
-                </div>
-            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                    <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
                 </div>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1<br>六興ビル 5F</p>
                 <p>TEL 03-5980-0822</p>
@@ -140,16 +141,7 @@
 
 
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.site-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>    <script src="main.js?v=20260831-3"></script>
+    <script src="main.js?v=20260904-7"></script>
 </body>
 
 </html>

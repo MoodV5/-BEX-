@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <meta name="Keywords" content="ベックス,株式会社ベックス,教育用設備,CALLシステム,デジタルLL,視聴覚設備,遠隔講義システム,チエル,アンペール">
     <meta name="Description" content="株式会社ベックスの教育用設備（CALLシステム、視聴覚設備、遠隔講義システム等）をご紹介します。">
-    <title>教育用設備 | 株式会社 ベックス</title>
+    <title>教育用設備 | 株式会社ベックス</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260831-10">
+    <link rel="stylesheet" href="style.css?v=20260904-14">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://MoodV5.github.io/-BEX-/kyouiku.html">
-    <meta property="og:site_name" content="株式会社 ベックス">
-    <meta property="og:title" content="教育用設備 | 株式会社 ベックス">
+    <meta property="og:site_name" content="株式会社ベックス">
+    <meta property="og:title" content="教育用設備 | 株式会社ベックス">
     <meta property="og:description" content="株式会社ベックスの教育用設備（CALLシステム、視聴覚設備、遠隔講義システム等）をご紹介します。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://MoodV5.github.io/-BEX-/kyouiku.html">
@@ -33,13 +35,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                     <li class="nav-item">
-                        <a href="index.html#business" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="index.html#business" class="nav-link">事業内容 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響・表示系</a></li>
                             <li><a href="bousai.html" class="dropdown-item">安全・防災・監視系</a></li>
@@ -49,7 +51,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="concept.html" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="concept.html" class="nav-link">会社情報 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">会社案内</a></li>
@@ -67,9 +69,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">教育用設備 | <span style="white-space: nowrap;">株式会社 ベックス</span></h1>
+                <h1 class="hero-title">教育用設備 | <span class="hero-company-name">株式会社ベックス</span></h1>
                 <p class="hero-desc">次世代の教育を支える、最新の教育関連設備をご提案します。</p>
-                <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
+                <a href="contact.html" class="btn btn-primary contact-button">お問い合わせ<span class="contact-button__frame" aria-hidden="true"></span></a>
             </div>
         </div>
     </section>
@@ -80,34 +82,32 @@
                 
                 <h3 class="section-title">CALL・デジタルLL</h3>
                 <p class="section-subtitle">Study & System</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
+                <div class="service-panel">
                     <p style="font-weight: bold; margin-bottom: 1.5rem; color: var(--primary);">当社がご提案する教育システム</p>
-                    <p style="margin-bottom: 1.5rem;">コンピューター教育が当たり前になってから、もうどれくらい経つのでしょうか。<br>
-                    コンピューターの普及がめざましい現在でも、操作の全くわからない学生から自分でHPを開設している学生まで、個人レベルは様々です。</p>
-                    <p style="margin-bottom: 2rem;">そこで、パソコン教室にLLシステムを組み合わせたCALLシステム。<br>
-                    CALLシステムは、個人レベルに合わせた指導ができ、わかる学生に「つまらない」、わからない学生に「難しい」なんて言わせません。</p>
+                    <p style="margin-bottom: 1.5rem;">コンピューターを活用した教育が広く普及する一方、学習者の知識や操作スキルには幅があります。</p>
+                    <p style="margin-bottom: 2rem;">パソコン教室にLLシステムを組み合わせたCALLシステムなら、一人ひとりの習熟度に応じた指導が可能です。</p>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem;">
                         <div style="background: rgba(59, 130, 246, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2);">
                             <h4 style="color: var(--secondary); margin-bottom: 1rem;">チエル株式会社</h4>
-                            <p style="font-size: 0.9rem;">弊社はチエル株式会社の販売パートナーですので、授業支援ソフトのチエル製品のご提供が可能です。<br>
-                            生徒一人一人にPCを設置し、授業支援ツールの映像・音声や先生が作成した資料を配信する事ができます。また、生徒は授業時間外にデジタル教材等を自学自習をすることで、教育環境の場を広げます。</p>
+                            <p style="font-size: 0.9rem;">当社はチエル株式会社の販売パートナーとして、同社の授業支援ソフトを提供しています。<br>
+                            学習者一人ひとりにPCを用意し、映像・音声や教員が作成した資料を配信できます。授業時間外にもデジタル教材を用いて自学自習できるため、学習機会が広がります。</p>
                         </div>
                         <div style="background: rgba(59, 130, 246, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2);">
                             <h4 style="color: var(--secondary); margin-bottom: 1rem;">株式会社アンペール</h4>
-                            <p style="font-size: 0.9rem;">弊社は株式会社アンペールの販売パートナーですので、AdiLL（アディール）のご提供が可能です。<br>
-                            「教科書と同じ手軽さで」をモットーに、アナログ（LLの文化）とデジタル技術の良い部分だけをミックスさせた新しい語学授業支援システムです。生徒が使用する端末機器はシンプル設計で操作は簡単。必要なPCは先生の操作する1台だけでＯＫです。</p>
+                            <p style="font-size: 0.9rem;">当社は株式会社アンペールの販売パートナーとして、AdiLL（アディール）を提供しています。<br>
+                            「教科書と同じ手軽さで」をコンセプトに、従来のLL設備とデジタル技術の利点を組み合わせた語学授業支援システムです。学習者用端末は簡単に操作でき、教員用PC1台で運用できます。</p>
                         </div>
                     </div>
                 </div>
 
                 <h3 class="section-title">視聴覚設備</h3>
                 <p class="section-subtitle">Audio Visual Equipment</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem;">映像関係（ディスプレイ、プロジェクター、スクリーン、等々）や音響関係（マイク、スピーカー、等々）をお客様の使い易さと先進的なシステムを総合的にご提案します。</p>
-                    <p style="margin-bottom: 1.5rem;">昨今の視聴覚設備は、液晶プロジェクターにパソコンの映像を投影してワイヤレスマイクを利用するケースが増えております。また、最新のパソコンでは、正常に液晶プロジェクターに投影できないなどのケースも増えております。<br>
-                    構築後のトラブルを極限まで下げる知識とテクニックの宝庫ＢＥＸ。お気軽にご相談ください。</p>
-                    <p style="margin-bottom: 2rem;">数年前では、機材を別々に用意していましたが、アンプ機能、ミキサー機能、ワイヤレスマイクチューナーなど１台で何役もこなし価格もリーズナブルなものがございます。もちろんこれ一台で液晶プロジェクターの制御も可能です。</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem;">ディスプレイ、プロジェクター、スクリーンなどの映像機器と、マイクやスピーカーなどの音響機器を組み合わせ、使いやすさを重視したシステムを総合的にご提案します。</p>
+                    <p style="margin-bottom: 1.5rem;">近年は、液晶プロジェクターにPC映像を投影し、ワイヤレスマイクを利用するケースが増えています。一方、PCとプロジェクターの組み合わせによっては、映像を正常に投影できない場合もあります。<br>
+                    当社は、導入後のトラブルを抑えるための知識と技術を生かして、安定したシステムを構築します。</p>
+                    <p style="margin-bottom: 2rem;">現在は、アンプ、ミキサー、ワイヤレスマイクチューナーなどの機能を1台に集約した機器もあります。構成を簡素化しながら、液晶プロジェクターの制御にも対応できます。</p>
                     
                     <div style="background: rgba(15, 23, 42, 0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
                         <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-color);">高性能DSPを搭載。使いやすく多機能なデジタルミキサー</h4>
@@ -127,32 +127,31 @@
 
                 <h3 class="section-title">遠隔講義システム</h3>
                 <p class="section-subtitle">Remote Lecture System</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8;">
-                    <p style="margin-bottom: 1.5rem;">日々ネットワークが高速化することにより、映像、音声の伝達能力が格段に上がっております。会議システム本体にも High Definition時代が到来し、ますます目の離せない製品となってきています。</p>
-                    <p style="margin-bottom: 2rem; font-weight: bold; color: var(--primary); font-size: 1.1rem; text-align: center;">離れたキャンパスとタイムリーに授業を行うことが当たり前となった今<br>新たな授業風景がここにあります。</p>
+                <div class="service-panel service-panel--flush">
+                    <p style="margin-bottom: 1.5rem;">ネットワークの高速化により、映像・音声を高品質に伝送できるようになりました。遠隔会議・講義システムも高精細化し、離れた拠点を結ぶ教育環境の整備が進んでいます。</p>
+                    <p style="margin-bottom: 2rem; font-weight: bold; color: var(--primary); font-size: 1.1rem; text-align: center;">離れたキャンパスをリアルタイムで結び、場所を問わず授業を実施できる環境を構築します。</p>
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
                         <div style="flex: 1; min-width: 250px; background: rgba(59, 130, 246, 0.05); padding: 1.5rem; border-radius: 8px;">
                             <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
                                 <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> 1080i ハイビジョン映像での通信を実現</li>
-                                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> デュアルストリームでＨＤ映像とＰＣ画面を30フレームで共有できる「データソリューション」機能を搭載</li>
+                                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> デュアルストリームでHD映像とPC画面を30フレームで共有できる「データソリューション」機能を搭載</li>
                                 <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> 通信中の映像にマーキング可能な「ビデオアノテーション」機能を搭載</li>
-                                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> ＨＤカメラに新開発の「ブライトフェイス」機能を搭載</li>
+                                <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> HDカメラに新開発の「ブライトフェイス」機能を搭載</li>
                                 <li style="margin-bottom: 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0; color: var(--primary);">✓</span> どこにでも持ち運びやすいコンパクトサイズ</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
-                </div>
-            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                    <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
                 </div>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1<br>六興ビル 5F</p>
                 <p>TEL 03-5980-0822</p>
@@ -185,16 +184,7 @@
 
 
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.site-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script><script src="main.js?v=20260831-3"></script>
+    <script src="main.js?v=20260904-7"></script>
 </body>
 
 </html>

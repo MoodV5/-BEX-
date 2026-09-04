@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <meta name="Keywords" content="ベックス,お問い合わせ,BEX">
     <meta name="Description" content="株式会社ベックスへのお問い合わせはこちらから。">
-    <title>お問い合わせ | 株式会社 ベックス</title>
+    <title>お問い合わせ | 株式会社ベックス</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260831-10">
+    <link rel="stylesheet" href="style.css?v=20260904-14">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://MoodV5.github.io/-BEX-/contact.html">
-    <meta property="og:site_name" content="株式会社 ベックス">
-    <meta property="og:title" content="お問い合わせ | 株式会社 ベックス">
+    <meta property="og:site_name" content="株式会社ベックス">
+    <meta property="og:title" content="お問い合わせ | 株式会社ベックス">
     <meta property="og:description" content="株式会社ベックスへのお問い合わせはこちらから。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://MoodV5.github.io/-BEX-/contact.html">
@@ -31,13 +33,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                     <li class="nav-item">
-                        <a href="index.html#business" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="index.html#business" class="nav-link">事業内容 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響・表示系</a></li>
                             <li><a href="bousai.html" class="dropdown-item">安全・防災・監視系</a></li>
@@ -47,7 +49,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="concept.html" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="concept.html" class="nav-link">会社情報 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">会社案内</a></li>
@@ -104,9 +106,19 @@
                     <label for="message">お問い合わせ内容 <span class="required">*</span></label>
                     <textarea id="message" name="message" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
                 </div>
-                
+
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem; border: none; cursor: pointer;">送信する</button>
+                    <button type="submit" class="send-button">
+                        <span class="send-button__icon-clip" aria-hidden="true">
+                            <span class="send-button__icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="send-button__label">送信する</span>
+                    </button>
                 </div>
             </form>
 
@@ -114,7 +126,7 @@
                 <h3>お電話・FAXでのお問い合わせ</h3>
                 <p><strong>TEL:</strong> 03-5980-0822</p>
                 <p><strong>FAX:</strong> 03-5980-0877</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">受付時間: 平日 9:00〜18:00 (土日祝日除く)</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">受付時間：平日 9:00～18:00（土日祝日を除く）</p>
             </div>
         </div>
     </main>
@@ -124,7 +136,7 @@
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                    <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
                 </div>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1<br>六興ビル 5F</p>
                 <p>TEL 03-5980-0822</p>
@@ -155,16 +167,6 @@
         </div>
     </footer>
 
-    <!-- Script for sticky header -->
-    <script>
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.site-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>    <script src="main.js?v=20260831-3"></script>
+    <script src="main.js?v=20260904-7"></script>
 </body>
 </html>

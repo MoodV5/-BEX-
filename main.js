@@ -10,13 +10,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.site-header');
     const headerInner = header?.querySelector('.header-inner');
     const mainNav = header?.querySelector('.main-nav');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isHomePage = document.body.classList.contains('home-page');
+    const homeMotionSeenKey = 'bex:home-motion-seen';
+    const homeNavigationKey = 'bex:home-navigation';
+    const navigationEntry = performance.getEntriesByType('navigation')[0];
+    const isReload = navigationEntry?.type === 'reload';
+    let skipHomeMotion = false;
+
+    try {
+        const arrivedViaHomeLink = sessionStorage.getItem(homeNavigationKey) === '1';
+        const hasSeenHomeMotion = sessionStorage.getItem(homeMotionSeenKey) === '1';
+
+        skipHomeMotion = isHomePage && arrivedViaHomeLink && hasSeenHomeMotion && !isReload;
+
+        if (isHomePage) {
+            sessionStorage.removeItem(homeNavigationKey);
+            sessionStorage.setItem(homeMotionSeenKey, '1');
+        }
+    } catch {
+        // Continue with the normal animation when storage is unavailable.
+    }
+
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', event => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+            try {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#')) return;
+
+                const destination = new URL(href, window.location.href);
+                const targetsHome = destination.origin === window.location.origin
+                    && /\/(?:index\.html)?$/.test(destination.pathname);
+                const isHomeSectionLink = isHomePage
+                    && destination.pathname === window.location.pathname
+                    && destination.hash;
+
+                if (targetsHome && !isHomeSectionLink) {
+                    sessionStorage.setItem(homeNavigationKey, '1');
+                }
+            } catch {
+                // Navigation still works when storage is unavailable.
+            }
+        });
+    });
 
     // Keep the contact route visible on detail pages that use the older header markup.
     if (mainNav && !mainNav.querySelector('.header-contact-btn')) {
         const contactLink = document.createElement('a');
         contactLink.href = 'contact.html';
-        contactLink.className = 'header-contact-btn';
-        contactLink.innerHTML = 'お問い合わせ <span aria-hidden="true">↗</span>';
+        contactLink.className = 'header-contact-btn contact-button';
+        contactLink.innerHTML = 'お問い合わせ<span class="contact-button__frame" aria-hidden="true"></span>';
         mainNav.appendChild(contactLink);
     }
 
@@ -51,78 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateHeaderState() {
-        if (header) header.classList.toggle('scrolled', window.scrollY > 50);
-    }
-    
-    window.addEventListener('scroll', updateHeaderState);
-    updateHeaderState(); // Run once on load to catch initial scroll position
-
-    /* 2. Animated "Back to Top" Button Generation */
-    const backToTop = document.createElement('a');
-    backToTop.href = '#';
+    /* 2. Back-to-top button */
+    const backToTop = document.createElement('button');
+    backToTop.type = 'button';
     backToTop.className = 'back-to-top';
-    backToTop.innerHTML = '↑';
+    backToTop.textContent = '↑';
     backToTop.setAttribute('aria-label', 'トップへ戻る');
-    
-    // Set styles dynamically
-    Object.assign(backToTop.style, {
-        position: 'fixed',
-        bottom: '30px',
-        right: '30px',
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#0d2b4e',
-        color: 'white',
-        borderRadius: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: '1.5rem',
-        textDecoration: 'none',
-        boxShadow: '0 6px 18px rgba(13,43,78,0.2)',
-        opacity: '0',
-        visibility: 'hidden',
-        transform: 'translateY(20px)',
-        transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        zIndex: '999'
-    });
-    
-    // Hover effect
-    backToTop.addEventListener('mouseenter', () => {
-        backToTop.style.backgroundColor = '#1a73e8';
-        backToTop.style.transform = 'translateY(-5px) scale(1.1)';
-    });
-    backToTop.addEventListener('mouseleave', () => {
-        backToTop.style.backgroundColor = '#0d2b4e';
-        backToTop.style.transform = 'translateY(0) scale(1)';
-    });
-
     document.body.appendChild(backToTop);
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            backToTop.style.opacity = '1';
-            backToTop.style.visibility = 'visible';
-            backToTop.style.transform = 'translateY(0) scale(1)';
-        } else {
-            backToTop.style.opacity = '0';
-            backToTop.style.visibility = 'hidden';
-            backToTop.style.transform = 'translateY(20px) scale(1)';
-        }
-    });
+    const updateScrollState = () => {
+        header?.classList.toggle('scrolled', window.scrollY > 50);
+        backToTop.classList.toggle('visible', window.scrollY > 400);
+    };
 
-    backToTop.addEventListener('click', (e) => {
-        e.preventDefault();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+    updateScrollState();
+
+    backToTop.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
     });
 
-    /* 3. Smooth Dropdown Animations (Removed - handled by pure CSS in style.css) */
-
-    /* 4. Smooth Scrolling for all anchor links */
+    /* 3. Smooth scrolling for in-page links */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -137,13 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: 'smooth'
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
                 });
             }
         });
     });
 
-    /* 5. Top-page documentary image slider */
+    /* 4. Top-page documentary image slider */
     const slider = document.getElementById('heroSlider');
     const sliderTrack = document.getElementById('heroSliderTrack');
     const slides = sliderTrack ? Array.from(sliderTrack.children) : [];
@@ -154,8 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slider && sliderTrack && slides.length > 0) {
         let currentSlide = 0;
         let autoplayTimer;
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
         const dots = slides.map((_, index) => {
             const dot = document.createElement('button');
             dot.type = 'button';
@@ -181,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const stopAutoplay = () => window.clearInterval(autoplayTimer);
         const startAutoplay = () => {
-            if (!reduceMotion && slides.length > 1) {
+            if (!prefersReducedMotion && slides.length > 1) {
                 stopAutoplay();
                 autoplayTimer = window.setInterval(() => showSlide(currentSlide + 1), 6500);
             }
@@ -211,145 +206,99 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ======================================================================
-       6. Network Canvas Animation (Interactive Particle System)
+       5. Progressive page and scroll motion (home page only)
        ====================================================================== */
-    const canvas = document.getElementById('network-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        const mouse = { x: null, y: null, radius: 150 };
+    // Reveal key headings one character at a time while preserving authored
+    // line breaks, nested styling and an accessible, unsplit heading label.
+    const characterRevealSelectors = [
+        '.home-page .hero-title',
+        '.home-page .intro-grid > h2',
+        '.home-page .display-heading',
+        '.home-page .process-grid h3',
+        '.home-page .maintenance-copy > h2',
+        '.home-page .contact-cta h2'
+    ];
 
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = document.querySelector('.hero').offsetHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
+    const characterRevealTargets = document.querySelectorAll(characterRevealSelectors.join(', '));
 
-        window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                mouse.x = e.x;
-                mouse.y = e.y - rect.top;
-            } else {
-                mouse.x = null;
-                mouse.y = null;
+    const prepareCharacterReveal = heading => {
+        const accessibleTitle = heading.textContent.trim().replace(/\s+/g, ' ');
+        let characterIndex = 0;
+
+        const animateNode = node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const textFragment = document.createDocumentFragment();
+                Array.from(node.textContent || '').forEach(character => {
+                    const characterElement = document.createElement('span');
+                    characterElement.className = 'text-reveal-character';
+                    characterElement.textContent = character;
+                    characterElement.setAttribute('aria-hidden', 'true');
+                    characterElement.style.setProperty('--character-delay', `${90 + characterIndex * 26}ms`);
+                    textFragment.appendChild(characterElement);
+                    characterIndex += 1;
+                });
+                return textFragment;
             }
+
+            if (node.nodeName === 'BR') {
+                return document.createElement('br');
+            }
+
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                const elementClone = node.cloneNode(false);
+                Array.from(node.childNodes).forEach(child => {
+                    elementClone.appendChild(animateNode(child));
+                });
+                return elementClone;
+            }
+
+            return node.cloneNode(true);
+        };
+
+        const titleFragment = document.createDocumentFragment();
+        Array.from(heading.childNodes).forEach(node => {
+            titleFragment.appendChild(animateNode(node));
         });
-        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > height) this.vy = -this.vy;
+        heading.replaceChildren(titleFragment);
+        heading.setAttribute('aria-label', accessibleTitle);
+        heading.classList.add('is-character-animated');
+    };
 
-                // Mouse interaction
-                if (mouse.x != null && mouse.y != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        this.vx -= forceDirectionX * force * 0.05;
-                        this.vy -= forceDirectionY * force * 0.05;
-                    }
-                }
-                
-                // Friction to prevent infinite speed buildup
-                this.vx *= 0.99;
-                this.vy *= 0.99;
-                
-                // Minimum speed maintenance
-                if(Math.abs(this.vx) < 0.2) this.vx += (this.vx > 0 ? 0.05 : -0.05);
-                if(Math.abs(this.vy) < 0.2) this.vy += (this.vy > 0 ? 0.05 : -0.05);
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            let numberOfParticles = (width * height) / 15000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, width, height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 - distance/120 * 0.2})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        initParticles();
-        animateParticles();
+    if (!prefersReducedMotion && !skipHomeMotion) {
+        characterRevealTargets.forEach(prepareCharacterReveal);
     }
 
-    /* ======================================================================
-       7. Scroll Reveal (Intersection Observer)
-       ====================================================================== */
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    /* ======================================================================
-       8. Progressive page and scroll motion
-       ====================================================================== */
-    const reducePageMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const motionGroups = [
         document.querySelectorAll('.intro-grid > *'),
         document.querySelectorAll('.fact-grid > *'),
         document.querySelectorAll('.section-heading-row > *'),
+        document.querySelectorAll('.domains-grid > *'),
         document.querySelectorAll('.process-grid > *'),
         document.querySelectorAll('.maintenance-grid > *'),
-        document.querySelectorAll('.contact-cta > *'),
-        document.querySelectorAll('body:not(.home-page) .content-card'),
-        document.querySelectorAll('body:not(.home-page) .grid-2 > *'),
-        document.querySelectorAll('body:not(.home-page) .grid-3 > *')
+        document.querySelectorAll('.contact-cta > *')
     ];
 
-    if (!reducePageMotion && 'IntersectionObserver' in window) {
+    if (isHomePage && !skipHomeMotion && !prefersReducedMotion && 'IntersectionObserver' in window) {
         document.body.classList.add('motion-ready');
         const motionTargets = new Set();
+
+        const characterRevealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-character-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.2 });
+
+        characterRevealTargets.forEach(heading => {
+            if (heading.closest('.hero')) {
+                heading.classList.add('is-character-visible');
+            } else {
+                characterRevealObserver.observe(heading);
+            }
+        });
 
         motionGroups.forEach(group => {
             group.forEach((element, index) => {
@@ -395,17 +344,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ======================================================================
-       9. Interactive Card Glow (Hover Effects)
-       ====================================================================== */
-    const glowCards = document.querySelectorAll('.glow-card');
-    glowCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
 });

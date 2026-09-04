@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <meta name="Keywords" content="ベックス,株式会社ベックス,特注品製作,システム制御,タッチパネル制御,AVコントロール">
-    <meta name="Description" content="株式会社ベックスの特注品製作（システム制御・タッチパネル）についてご紹介します。複雑なAVシステムも使いやすく構築します。">
-    <title>特注品製作 | 株式会社 ベックス</title>
+    <meta name="Description" content="株式会社ベックスの特注品製作（システム制御・タッチパネル）についてご紹介します。複雑なAVシステムを使いやすく構築します。">
+    <title>特注品製作 | 株式会社ベックス</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260831-10">
+    <link rel="stylesheet" href="style.css?v=20260904-14">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://MoodV5.github.io/-BEX-/order.html">
-    <meta property="og:site_name" content="株式会社 ベックス">
-    <meta property="og:title" content="特注品製作 | 株式会社 ベックス">
-    <meta property="og:description" content="株式会社ベックスの特注品製作（システム制御・タッチパネル）についてご紹介します。複雑なAVシステムも使いやすく構築します。">
+    <meta property="og:site_name" content="株式会社ベックス">
+    <meta property="og:title" content="特注品製作 | 株式会社ベックス">
+    <meta property="og:description" content="株式会社ベックスの特注品製作（システム制御・タッチパネル）についてご紹介します。複雑なAVシステムを使いやすく構築します。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://MoodV5.github.io/-BEX-/order.html">
     <meta property="og:image" content="https://MoodV5.github.io/-BEX-/images/hero_index.jpg">
@@ -33,13 +35,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                     <li class="nav-item">
-                        <a href="index.html#business" class="nav-link">事業内容 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="index.html#business" class="nav-link">事業内容 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="eizoonkyo.html" class="dropdown-item">映像・音響・表示系</a></li>
                             <li><a href="bousai.html" class="dropdown-item">安全・防災・監視系</a></li>
@@ -49,7 +51,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="concept.html" class="nav-link">会社情報 <span style="font-size: 0.8em; margin-left: 4px;">▼</span></a>
+                        <a href="concept.html" class="nav-link">会社情報 <span class="nav-chevron" aria-hidden="true">⌄</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">会社案内</a></li>
@@ -67,9 +69,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">特注品製作 | <span style="white-space: nowrap;">株式会社 ベックス</span></h1>
-                <p class="hero-desc">革新的なテクノロジーでビジネスの未来を形作ります。</p>
-                <a href="contact.html" class="btn btn-primary">お問い合わせ</a>
+                <h1 class="hero-title">特注品製作 | <span class="hero-company-name">株式会社ベックス</span></h1>
+                <p class="hero-desc">用途に合わせた操作環境を、設計から製作まで一貫して構築します。</p>
+                <a href="contact.html" class="btn btn-primary contact-button">お問い合わせ<span class="contact-button__frame" aria-hidden="true"></span></a>
             </div>
         </div>
     </section>
@@ -80,36 +82,34 @@
                 
                 <h3 class="section-title">システム制御</h3>
                 <p class="section-subtitle">System Control</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem; font-weight: bold;">会議室や講堂、視聴覚室などにおいて、映像音響設備を操作するには、複雑すぎる場合があります。</p>
-                    <p style="margin-bottom: 2rem;">電源操作、映像・音声切り替え操作などなど・・・<br>
-                    システムに見合った操作部を製作いたします。</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem; font-weight: bold;">会議室や講堂、視聴覚室などの映像音響設備は、システム構成によって操作が複雑になりがちです。</p>
+                    <p style="margin-bottom: 2rem;">電源操作や映像・音声の切り替えなどを分かりやすく行えるよう、システムに適した操作部を製作します。</p>
                     
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                         <div style="flex: 1; min-width: 250px; background: rgba(59, 130, 246, 0.05); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <h4 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 1rem;">基盤設計・製作</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 0;">CADにて設計、内部基盤を製作。<br>RS-232C制御、赤外線、接点などを使用し実現いたします。</p>
+                            <h4 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 1rem;">基板設計・製作</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 0;">CADで設計し、内部基板を製作します。<br>RS-232C制御、赤外線、接点などを用いて、求められる制御を実現します。</p>
                         </div>
                     </div>
                 </div>
 
                 <h3 class="section-title">タッチパネル制御</h3>
                 <p class="section-subtitle">Touch Panel Control</p>
-                <div style="background: var(--white); padding: 2.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); line-height: 1.8; margin-bottom: 3rem;">
-                    <p style="margin-bottom: 1.5rem;">タッチパネルによる制御も可能です。<br>デザインがスタイリッシュで、近未来的な空間が生まれます。</p>
-                    <p>誰にでも直感的に操作できるインターフェースをご提案します。機器の追加や変更にも柔軟に対応できるのが特徴です。</p>
+                <div class="service-panel">
+                    <p style="margin-bottom: 1.5rem;">タッチパネルによる制御にも対応します。<br>意匠性にも配慮し、空間になじむ操作環境を構築します。</p>
+                    <p>誰でも直感的に操作できるインターフェースをご提案します。機器の追加や変更にも柔軟に対応できます。</p>
                 </div>
 
             </section>
-                </div>
-            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/bex-rogo.jpg" alt="株式会社ベックス">
+                    <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
                 </div>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1<br>六興ビル 5F</p>
                 <p>TEL 03-5980-0822</p>
@@ -142,16 +142,7 @@
 
 
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.site-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script><script src="main.js?v=20260831-3"></script>
+    <script src="main.js?v=20260904-7"></script>
 </body>
 
 </html>
