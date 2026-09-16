@@ -6,6 +6,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Keep file previews usable; use directory URLs when served over HTTP(S).
+    if (/^https?:$/.test(window.location.protocol)) {
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (/^index\.html(?:[?#]|$)/.test(href)) {
+                link.setAttribute('href', href.replace(/^index\.html/, './'));
+            }
+        });
+    }
+
+    // Normalize direct home-page visits without reloading or losing query/hash.
+    if (/^https?:$/.test(window.location.protocol)
+        && window.location.pathname.endsWith('/index.html')) {
+        const homeUrl = new URL(window.location.href);
+        homeUrl.pathname = homeUrl.pathname.slice(0, -'index.html'.length);
+        window.history.replaceState(window.history.state, '', homeUrl.href);
+    }
+
     /* 1. Dynamic Sticky Header Animation */
     const header = document.querySelector('.site-header');
     const headerInner = header?.querySelector('.header-inner');
