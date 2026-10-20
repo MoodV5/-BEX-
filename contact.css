@@ -1,0 +1,30 @@
+/* Contact-only rules: keep the shared header and send-button design unchanged. */
+.contact-honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.contact-status {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #bfd3e8;
+    border-radius: var(--border-radius);
+    background: #f3f7fb;
+    color: #173451;
+    overflow-wrap: anywhere;
+}
+
+.contact-status[hidden] { display: none; }
+.contact-status[data-state="error"] { border-color: #c99191; background: #fff5f5; color: #842c2c; }
+.contact-status[data-state="success"] { border-color: #85b29c; background: #f0f8f3; color: #20543b; }
+.contact-privacy { font-size: .9rem; color: var(--color-text-muted); }
+.contact-form .send-button:disabled { opacity: .6; cursor: not-allowed; }
+.contact-form .send-button:disabled .send-button__label,
+.contact-form .send-button:disabled svg { transform: none; }
+.contact-form .send-button:disabled .send-button__label { opacity: 1; }
+.contact-form .send-button:disabled .send-button__icon { animation: none; }
+.contact-form [aria-invalid="true"] { border-color: #a43b3b; }

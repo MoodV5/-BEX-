@@ -23,8 +23,9 @@
     --font-primary: 'Inter', 'Noto Sans JP', sans-serif;
 
     --nav-height: 88px;
-    --border-radius: 16px;
-    --border-radius-pill: 9999px;
+    --border-radius: 4px;
+    --border-radius-pill: var(--border-radius);
+    --button-radius: var(--border-radius);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 1px 2px rgba(13, 43, 78, 0.08);
     --shadow-md: 0 8px 24px rgba(13, 43, 78, 0.08);
@@ -112,7 +113,7 @@ h4 {
     padding: 0.875rem 2rem;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: var(--border-radius-pill);
+    border-radius: var(--button-radius);
     cursor: pointer;
     transition: var(--transition);
     border: 2px solid transparent;
@@ -430,7 +431,7 @@ h4 {
     margin-bottom: 3rem;
     padding: 2.5rem;
     background: var(--color-bg-white);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     line-height: 1.8;
 }
@@ -463,7 +464,7 @@ h4 {
     overflow: hidden;
     background: var(--color-bg-white);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
 }
 
@@ -618,7 +619,7 @@ h4 {
 .feature-img {
     height: 160px;
     object-fit: cover;
-    border-radius: calc(var(--border-radius) - 4px);
+    border-radius: var(--border-radius);
     margin-bottom: 1.5rem;
 }
 
@@ -652,12 +653,13 @@ h4 {
 
 .footer-logo img {
     display: block;
-    width: 120%;
-    max-width: none;
-    height: auto;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
     margin: 0;
-    border-radius: 4px;
-    transform: translate(-8.333%, -8.333%);
+    border-radius: var(--border-radius);
+    transform: none;
 }
 
 .footer-links h4 {
@@ -747,7 +749,7 @@ h4 {
     width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     font-family: var(--font-primary);
     font-size: 1rem;
     color: var(--color-text-dark);
@@ -775,7 +777,7 @@ h4 {
     padding: 0.7em 1.1em 0.7em 0.95em;
     overflow: hidden;
     border: 0;
-    border-radius: 14px;
+    border-radius: var(--button-radius);
     color: #ffffff;
     background: var(--color-primary);
     font-family: inherit;
@@ -947,7 +949,7 @@ h4 {
     background-color: var(--color-primary);
     color: white;
     padding: 0.5rem 1.5rem;
-    border-radius: 50px;
+    border-radius: var(--button-radius);
     font-weight: 700;
     margin-left: 20px;
     transition: all 0.3s ease;
@@ -1075,20 +1077,30 @@ body {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
-    width: 280px;
+    gap: 12px;
+    width: auto;
     height: 70px;
+    font-size: clamp(27px, 2.8125vw, 36px);
     overflow: hidden;
 }
 
 .logo img {
     flex: 0 0 auto;
-    width: 120%;
-    max-width: none;
-    height: auto !important;
-    filter: contrast(1.08) saturate(1.08);
+    width: 2.75em;
+    max-width: 100%;
+    height: 1.125em !important;
+    object-fit: contain;
     mix-blend-mode: multiply;
-    transform: translate(-8.333%, -8.333%);
+    transform: none;
     transition: var(--transition);
+}
+
+.header-company-name {
+    color: #21158e;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .nav-list {
@@ -1126,13 +1138,13 @@ body {
     min-width: 250px;
     padding: 8px;
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
 }
 
 .dropdown-item {
     padding: 11px 14px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     color: var(--color-text-dark);
     font-size: 0.875rem;
 }
@@ -1154,7 +1166,7 @@ body {
     color: #fff;
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
-    border-radius: 8px;
+    border-radius: var(--button-radius);
     font-size: 0.875rem;
     font-weight: 600;
     white-space: nowrap;
@@ -1180,7 +1192,7 @@ body {
     color: var(--color-text-dark);
     background: transparent;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--button-radius);
     font-size: 0;
     cursor: pointer;
 }
@@ -1218,7 +1230,7 @@ body {
     width: min(1560px, calc(100% - 32px));
     min-height: calc(100vh - 128px);
     margin: 104px auto 24px;
-    border-radius: 24px;
+    border-radius: var(--border-radius);
     overflow: hidden;
 }
 
@@ -1316,7 +1328,7 @@ body {
     min-height: 50px;
     padding: 0 24px;
     border-width: 1px;
-    border-radius: 8px;
+    border-radius: var(--button-radius);
     box-shadow: none;
     font-size: 0.925rem;
 }
@@ -1524,7 +1536,7 @@ body {
     color: var(--color-text-dark);
     background: #fff;
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: none;
 }
 
@@ -1659,7 +1671,7 @@ body {
 
 .maintenance-media {
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--border-radius);
 }
 
 .maintenance-media img {
@@ -1709,7 +1721,7 @@ body {
     padding: 72px;
     color: #fff;
     background: var(--color-primary);
-    border-radius: 24px;
+    border-radius: var(--border-radius);
 }
 
 .contact-cta > div:last-child > p {
@@ -1743,7 +1755,7 @@ body {
     padding: 0.62em 2em;
     overflow: hidden;
     border: 0;
-    border-radius: 0;
+    border-radius: var(--button-radius);
     color: var(--contact-button-color);
     background: transparent;
     box-shadow: none;
@@ -1774,6 +1786,7 @@ body {
     width: 100%;
     height: 100%;
     border: 3px solid var(--contact-button-color);
+    border-radius: inherit;
     background: transparent;
 }
 
@@ -1835,7 +1848,7 @@ body {
     padding: 0.7rem 1.3rem 0.7rem 1rem;
     overflow: hidden;
     border: 0;
-    border-radius: 10px;
+    border-radius: var(--button-radius);
     color: #ffffff;
     background: var(--color-primary);
     box-shadow: none;
@@ -1917,17 +1930,25 @@ body {
 }
 
 .footer-logo {
-    display: inline-flex;
-    width: 280px;
+    display: flex;
+    width: 170px;
     height: 70px;
     padding: 0;
     overflow: hidden;
     background: #fff;
-    border-radius: 6px;
+    border-radius: var(--border-radius);
 }
 
 .footer-logo img {
     mix-blend-mode: normal;
+}
+
+.footer-company .footer-company-name {
+    margin-top: 4px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
 }
 
 .footer-links a {
@@ -1971,7 +1992,7 @@ body:not(.home-page) .main-content {
 body:not(.home-page) .content-card,
 body:not(.home-page) .feature-card {
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     box-shadow: none;
 }
 
@@ -2008,13 +2029,19 @@ body:not(.home-page) .section-title {
     }
 
     .logo img {
-        width: 120%;
-        height: auto !important;
+        width: 2.75em;
+        height: 1.125em !important;
     }
 
     .logo {
-        width: 220px;
+        width: auto;
+        gap: 8px;
         height: 55px;
+        font-size: clamp(18px, 5.4vw, 25px);
+    }
+
+    .header-company-name {
+        font-size: 1em;
     }
 
     .menu-toggle {
@@ -2068,6 +2095,7 @@ body:not(.home-page) .section-title {
         transform: none;
     }
 
+    .main-nav .nav-item.is-expanded .dropdown-menu,
     .main-nav .nav-item:focus-within .dropdown-menu,
     .main-nav .nav-item:hover .dropdown-menu {
         display: block;
@@ -2084,7 +2112,7 @@ body:not(.home-page) .section-title {
         width: calc(100% - 16px);
         min-height: 680px;
         margin-top: 84px;
-        border-radius: 16px;
+        border-radius: var(--border-radius);
     }
 
     body:not(.home-page) .hero {
@@ -2256,7 +2284,7 @@ body:not(.home-page) .section-title {
         width: calc(100% - 16px);
         margin-bottom: 72px;
         padding: 48px 24px;
-        border-radius: 16px;
+        border-radius: var(--border-radius);
     }
 
     .footer-inner {

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/bex-favicon.png?v=20260916-1">
+    <link rel="apple-touch-icon" href="images/bex-favicon.png?v=20260916-1">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="description" content="映像音響設備、放送設備、防犯カメラ、学校設備、LAN・電気工事、保守・修理、特注製作に関する株式会社ベックスへのご相談・お問い合わせ。">
     <title>映像音響設備のご相談・お問い合わせ｜株式会社ベックス</title>
@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=20260904-14">
+    <link rel="stylesheet" href="style.css?v=20261020-3">
+    <link rel="stylesheet" href="contact.css?v=20261020-3">
 
     <!-- SEO & OGP Tags -->
     <link rel="canonical" href="https://www.bex.co.jp/contact.html">
@@ -58,7 +59,8 @@
     <header class="site-header">
         <div class="header-inner">
             <a href="index.html" class="logo">
-                <img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス">
+                <img src="images/bex-logo.jpg?v=20260916-1" alt="BEX">
+                <span class="header-company-name">株式会社ベックス</span>
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
@@ -78,6 +80,8 @@
                         <ul class="dropdown-menu">
                             <li><a href="concept.html" class="dropdown-item">企業コンセプト</a></li>
                             <li><a href="system.html" class="dropdown-item">システムソリューション</a></li>
+                            <li><a href="concept_3.html" class="dropdown-item">納入実績</a></li>
+                            <li><a href="concept_4.html" class="dropdown-item">取引先メーカー</a></li>
                             <li><a href="privacy.html" class="dropdown-item">個人情報保護方針</a></li>
                         </ul>
                     </li>
@@ -106,34 +110,42 @@
                 システム導入に関するご相談や、当社サービスに関するご質問など、お気軽にお問い合わせください。
             </p>
             
-            <form action="#" method="post" class="contact-form">
+            <noscript><p class="contact-status">JavaScriptを使わずに送信する場合は、<a href="contact.php">お問い合わせフォームを開いてください</a>。</p><style>.contact-form { display: none; }</style></noscript>
+            <form action="contact.php" method="post" class="contact-form" data-contact-form>
+                <input type="hidden" name="_token" value="">
+                <div class="contact-honeypot" aria-hidden="true">
+                    <label for="website">この欄は入力しないでください</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <p id="contact-status" class="contact-status" role="status" aria-live="polite" tabindex="-1" hidden><!-- contact-feedback --></p>
                 <div class="form-group">
                     <label for="company">貴社名・団体名</label>
-                    <input type="text" id="company" name="company" placeholder="例: 株式会社ベックス">
+                    <input type="text" id="company" name="company" maxlength="200" autocomplete="organization" placeholder="例: 株式会社ベックス">
                 </div>
                 
                 <div class="form-group">
                     <label for="name">お名前 <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" required placeholder="例: 山田 太郎">
+                    <input type="text" id="name" name="name" maxlength="100" autocomplete="name" required placeholder="例: 山田 太郎">
                 </div>
                 
                 <div class="form-group">
                     <label for="email">メールアドレス <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required placeholder="例: info@bex.co.jp">
+                    <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required placeholder="例: info@bex.co.jp">
                 </div>
                 
                 <div class="form-group">
                     <label for="tel">電話番号</label>
-                    <input type="tel" id="tel" name="tel" placeholder="例: 03-5980-0822">
+                    <input type="tel" id="tel" name="tel" maxlength="50" autocomplete="tel" placeholder="例: 03-5980-0822">
                 </div>
                 
                 <div class="form-group">
                     <label for="message">お問い合わせ内容 <span class="required">*</span></label>
-                    <textarea id="message" name="message" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
+                    <textarea id="message" name="message" maxlength="5000" required placeholder="ご質問やご相談内容をご記入ください"></textarea>
                 </div>
+                <p class="contact-privacy"><a href="privacy.html">個人情報保護方針</a>をご確認のうえ、送信してください。</p>
 
                 <div style="text-align: center; margin-top: 2rem;">
-                    <button type="submit" class="send-button">
+                    <button type="submit" class="send-button" data-contact-submit disabled>
                         <span class="send-button__icon-clip" aria-hidden="true">
                             <span class="send-button__icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -148,9 +160,10 @@
             </form>
 
             <div class="contact-info-block">
-                <h3>お電話・FAXでのお問い合わせ</h3>
+                <h3>お電話・FAX・メールでのお問い合わせ</h3>
                 <p><strong>TEL:</strong> 03-5980-0822</p>
                 <p><strong>FAX:</strong> 03-5980-0877</p>
+                <p><strong>E-mail:</strong> <a href="mailto:soumu@bex.co.jp">soumu@bex.co.jp</a></p>
                 <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">受付時間：平日 9:00～18:00（土日祝日を除く）</p>
             </div>
         </div>
@@ -160,7 +173,8 @@
 <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col footer-company">
-                <div class="footer-logo"><img src="images/bex-logo.png?v=20260904-1" alt="株式会社ベックス"></div>
+                <div class="footer-logo"><img src="images/bex-logo.jpg?v=20260916-1" alt="株式会社ベックス"></div>
+                <p class="footer-company-name">株式会社ベックス</p>
                 <p>〒170-0003<br>東京都豊島区駒込2-3-1 六興ビル5F</p>
                 <p>TEL 03-5980-0822<br>FAX 03-5980-0877</p>
             </div>
@@ -179,6 +193,8 @@
                 <ul>
                     <li><a href="concept.html">企業コンセプト</a></li>
                     <li><a href="system.html">システムソリューション</a></li>
+                    <li><a href="concept_3.html">納入実績</a></li>
+                    <li><a href="concept_4.html">取引先メーカー</a></li>
                     <li><a href="privacy.html">個人情報保護方針</a></li>
                     <li><a href="contact.html">お問い合わせ</a></li>
                 </ul>
@@ -190,6 +206,7 @@
         </div>
     </footer>
 
-    <script src="main.js?v=20260913-2"></script>
+    <script src="main.js?v=20261018-1"></script>
+    <script src="contact.js?v=20261020-1"></script>
 </body>
 </html>

@@ -1,0 +1,282 @@
+/* Company references and Visual Master product documents. */
+.screen-brand-mark {
+    width: min(100%, 640px);
+    height: auto;
+    margin: 0 auto 2rem;
+}
+
+.screen-detail-link {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.reference-content {
+    min-width: 0;
+}
+
+.reference-intro {
+    max-width: 800px;
+    margin: 0 0 1rem;
+    line-height: 1.9;
+}
+
+.reference-note {
+    margin: 1rem 0 2rem;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.reference-jump-links,
+.reference-related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.reference-jump-links a,
+.reference-related a {
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-bg-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.reference-jump-links a:hover,
+.reference-related a:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg-light);
+}
+
+.reference-group,
+.drawing-section {
+    margin: 3rem 0;
+    scroll-margin-top: 130px;
+}
+
+.reference-content h2 {
+    overflow-wrap: anywhere;
+}
+
+.reference-list {
+    border-top: 1px solid var(--color-border);
+}
+
+.reference-row {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2fr);
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.reference-row dt {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.reference-row dd {
+    min-width: 0;
+}
+
+.reference-systems {
+    display: grid;
+    gap: 0.35rem;
+    padding-left: 1.2rem;
+    color: var(--color-text-muted);
+    line-height: 1.85;
+}
+
+.reference-systems--columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.75rem;
+}
+
+.reference-systems li {
+    overflow-wrap: anywhere;
+}
+
+.maker-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    padding: 1px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-border);
+    list-style: none;
+}
+
+.maker-list li {
+    display: flex;
+    align-items: center;
+    min-height: 82px;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-white);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.screen-summary {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-bg-light);
+}
+
+.screen-summary img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.screen-summary h2 {
+    margin-bottom: 1rem;
+}
+
+.screen-summary p {
+    margin-bottom: 1rem;
+    line-height: 1.85;
+}
+
+.screen-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.screen-features li {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-bg-white);
+    font-size: 0.85rem;
+}
+
+.drawing-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+}
+
+.drawing-table {
+    width: 100%;
+    min-width: 540px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.drawing-table caption {
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    text-align: left;
+}
+
+.drawing-table th,
+.drawing-table td {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+.drawing-table thead {
+    background: var(--color-bg-light);
+    font-size: 0.9rem;
+}
+
+.drawing-table tbody th {
+    white-space: nowrap;
+}
+
+.drawing-table td:first-of-type {
+    white-space: nowrap;
+}
+
+.drawing-link {
+    display: inline-flex;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--button-radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.drawing-link:hover {
+    color: var(--color-bg-white);
+    background: var(--color-primary);
+}
+
+.reference-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.reference-content a:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+    .reference-content h2,
+    .screen-overview .section-title {
+        font-size: clamp(1.4rem, 5.7vw, 1.75rem);
+        line-height: 1.5;
+        text-wrap: balance;
+    }
+
+    .reference-content,
+    .screen-overview {
+        padding: 1.25rem;
+    }
+
+    .screen-overview .service-panel {
+        padding: 1.25rem;
+    }
+
+    .reference-row,
+    .screen-summary {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.75rem;
+    }
+
+    .reference-systems--columns,
+    .maker-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .screen-summary {
+        padding: 1.25rem;
+    }
+
+    .screen-summary img {
+        max-width: 300px;
+        margin: 0 auto 0.75rem;
+    }
+
+    .maker-list li {
+        min-height: 64px;
+        padding: 1rem;
+    }
+
+    .drawing-table th,
+    .drawing-table td {
+        padding: 0.85rem;
+    }
+}

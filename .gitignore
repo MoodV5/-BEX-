@@ -1,0 +1,93 @@
+# Git exclusions only: this file does NOT restrict access on the web server.
+# Already tracked files are not removed from Git by these rules.
+
+# SMTP credentials and runtime state (keep OUTSIDE httpdocs).
+bex-private/
+contact-config.php
+form-state/
+
+# Local environment files. Only sanitized examples belong in Git.
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.local.php
+
+# Credentials, private keys, and local connection settings.
+secrets/
+credentials/
+.aws/
+.ssh/
+*.key
+*.pem
+*.p12
+*.pfx
+.htpasswd
+.htpasswd.*
+/.netrc
+/_netrc
+/.npmrc
+/.ftpconfig
+/sftp-config.json
+
+# Local editor / coding-agent settings and history.
+/.vscode/
+/.idea/
+/.codex/
+/.agents/
+/.history/
+*.code-workspace
+
+# Reinstallable dependencies, generated builds, and test output.
+node_modules/
+/vendor/
+/dist/
+/build/
+coverage/
+playwright-report/
+test-results/
+.phpunit.cache/
+.phpunit.result.cache
+
+# Runtime logs, caches, and temporary files.
+*.log
+error_log
+.cache/
+.tmp/
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Backups and database exports. Do NOT ignore all ZIP/PDF files:
+# downloads/visual-master/ contains public drawings required by the site.
+/backup/
+/backups/
+/bex-backup-*.zip
+*.bak
+*.backup
+*.orig
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+
+# Internal working notes; not part of the public website delivery.
+/SITE-CONSISTENCY-NOTES.md
+/PRODUCT-SPEC-AUDIT.md
+/CONTACT-FORM-SETUP.md
+
+# Unreferenced image-search experiments / candidates (keep published assets).
+/images/test_unsplash.jpg
+/images/office_candidate1.jpg
+/images/office_candidate3.jpg
+
+# Operating-system metadata.
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

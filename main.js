@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mainNav.classList.remove('is-open');
             menuToggle.setAttribute('aria-expanded', 'false');
             menuToggle.setAttribute('aria-label', 'メニューを開く');
+            mainNav.querySelectorAll('.nav-item.is-expanded').forEach(item => {
+                item.classList.remove('is-expanded');
+                item.querySelector('.nav-link')?.setAttribute('aria-expanded', 'false');
+            });
         };
 
         menuToggle.addEventListener('click', () => {
@@ -105,7 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
         });
 
-        mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        mainNav.querySelectorAll('.nav-item').forEach(item => {
+            const trigger = item.querySelector(':scope > .nav-link');
+            const dropdown = item.querySelector(':scope > .dropdown-menu');
+            if (!trigger || !dropdown) return;
+
+            trigger.addEventListener('click', event => {
+                if (window.innerWidth > 860 || item.classList.contains('is-expanded')) return;
+
+                // First tap opens the submenu; a second tap follows the parent link.
+                event.preventDefault();
+                mainNav.querySelectorAll('.nav-item.is-expanded').forEach(other => {
+                    other.classList.remove('is-expanded');
+                    other.querySelector('.nav-link')?.setAttribute('aria-expanded', 'false');
+                });
+                item.classList.add('is-expanded');
+                trigger.setAttribute('aria-expanded', 'true');
+            });
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
+            if (!event.defaultPrevented) closeMenu();
+        }));
         document.addEventListener('keydown', event => {
             if (event.key === 'Escape') closeMenu();
         });

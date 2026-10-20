@@ -1,0 +1,1478 @@
+{
+  "sourceDate": "2026-10-18",
+  "sources": [
+    "http://www.bex.co.jp/concept_3.html",
+    "http://www.bex.co.jp/concept_4.html",
+    "http://www.bex.co.jp/vm2.html",
+    "http://www.bex.co.jp/vm3.html",
+    "http://www.bex.co.jp/vm4.html",
+    "http://www.bex.co.jp/vm5.html"
+  ],
+  "customerGroups": [
+    {
+      "id": "education",
+      "name": "学校・教育機関",
+      "sourceGroups": [
+        1
+      ]
+    },
+    {
+      "id": "public",
+      "name": "公共施設・研究機関・団体",
+      "sourceGroups": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "business",
+      "name": "企業・その他",
+      "sourceGroups": [
+        4
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "name": "東京大学",
+      "systems": [
+        "デジタル映像制作システム・大教室視聴覚システム",
+        "日本語教育実習システム",
+        "実験用ビデオカメラTVモニターシステム",
+        "遠隔講義・赤外線システム",
+        "ＨＤ遠隔講義システム",
+        "赤外線マイクシステム",
+        "マルチメディア視聴覚資料再生表示装置",
+        "ホール特殊照明設備・総合研究棟AVホール視聴覚設備",
+        "教養学部各教室マルチメディア視聴覚設備",
+        "本郷⇔柏キャンパス遠隔講義システム",
+        "ビデオアーカイブ、同メタデータ作成システム",
+        "講堂AV・遠隔講義システム",
+        "講義室視聴覚システム",
+        "大会議室AVシステム",
+        "会議室AV・TV会議システム",
+        "講堂音響映像設備",
+        "同時通訳システム",
+        "18号館ホール音響映像設備",
+        "ホールAV・同時通訳・遠隔講義システム",
+        "講義室遠隔講義・視聴覚システム",
+        "会議室遠隔講義システム",
+        "事務室壁掛けTV",
+        "地デジTV"
+      ],
+      "group": 1
+    },
+    {
+      "name": "学芸大学",
+      "systems": [
+        "Ｗ棟ＡＶ教室システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "お茶の水女子大学",
+      "systems": [
+        "プロジェクターシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "電気通信大学",
+      "systems": [
+        "映像機器・プロジェクターシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京音楽大学",
+      "systems": [
+        "映像表示システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "日本大学（歯学部）",
+      "systems": [
+        "館内放送システム",
+        "ナースコール",
+        "監視システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京海洋大学",
+      "systems": [
+        "マルチスキャンプロジェクター"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京芸術大学",
+      "systems": [
+        "奏楽堂中継用テレビ共聴用配線工事",
+        "舞台映像設備",
+        "映像システム・プロジェクターシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "一橋大学",
+      "systems": [
+        "東2号館大教室放送設備・情報教育棟ITV設備",
+        "研究棟ＡＶシステム",
+        "視聴覚教育機器教材作成室編集システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "埼玉大学",
+      "systems": [
+        "LL教室"
+      ],
+      "group": 1
+    },
+    {
+      "name": "大妻女子大学",
+      "systems": [
+        "CALL語学演習装置"
+      ],
+      "group": 1
+    },
+    {
+      "name": "学習院大学",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "学習院女子大学",
+      "systems": [
+        "語学練習装置（LLシステム）",
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "山梨県 大月女子短期大学",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "聖母女子短期大学",
+      "systems": [
+        "講堂AV設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "法政大学",
+      "systems": [
+        "講堂AV設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東洋大学",
+      "systems": [
+        "普通教室ＡＶ設備(特注パネル仕様）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "浦和大学",
+      "systems": [
+        "CALLシステム・講堂AV設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "文化女子大学",
+      "systems": [
+        "語学練習装置（LLシステム）・ライブラリーシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "立正大学",
+      "systems": [
+        "ネットワークカメラ"
+      ],
+      "group": 1
+    },
+    {
+      "name": "青山製図専門学校",
+      "systems": [
+        "プロジェクターシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "華学園",
+      "systems": [
+        "調理実習室ﾓﾆﾀﾘﾝｸﾞシステム（特注ラック仕様）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "日本大学櫻丘高等学校",
+      "systems": [
+        "CALLシステム・マルチメディア教室システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "日本芸術学園",
+      "systems": [
+        "教室モニタリングシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "芝学園",
+      "systems": [
+        "MM教室"
+      ],
+      "group": 1
+    },
+    {
+      "name": "京華商業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京立正高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "私立八王子実践高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "暁星学園",
+      "systems": [
+        "最新型語学練習装置システム（ListeningStation）・視聴覚設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "八王子高等学校",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "戸板女子学園",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京女子学園",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東京電機大学高等学校",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "佼成学園",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "東亜学園",
+      "systems": [
+        "語学練習装置（LLシステム）"
+      ],
+      "group": 1
+    },
+    {
+      "name": "杉並学院",
+      "systems": [
+        "語学練習装置（LLシステム）",
+        "パソコン教室2教室"
+      ],
+      "group": 1
+    },
+    {
+      "name": "立教池袋中学校・高等学校",
+      "systems": [
+        "校内映像及び音響設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "実践女子学園中学高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "市立柏中学校",
+      "systems": [
+        "校内放送スタジオ・視聴覚室AV設備"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立青井高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立赤羽商業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立園芸高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立王子工業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立青梅総合高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立蒲田高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立桐ヶ丘高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立蔵前工業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立翔陽高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立新宿高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立世田谷泉高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立世田谷総合高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立総合工科高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立第一商業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立第五商業高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立高島高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立調布北高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立練馬高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立富士森高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立町田高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立松が谷高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立稔が丘高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "都立六本木高等学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "千代田区立九段中等教育学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "長野県松本秀峰中等教育学校",
+      "systems": [
+        "CALLシステム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "独立行政法人日本学生支援機構 東京日本語教育センター",
+      "systems": [
+        "ＬＬ教室",
+        "ＰＣ教室",
+        "学生ホール 視聴覚システム"
+      ],
+      "group": 1
+    },
+    {
+      "name": "フォーリンプレスセンター",
+      "systems": [
+        "会見室同時通訳設備"
+      ],
+      "group": 2
+    },
+    {
+      "name": "ホクトピア",
+      "systems": [
+        "ホールワイヤレス音響設備"
+      ],
+      "group": 2
+    },
+    {
+      "name": "石ノ森萬画館",
+      "systems": [
+        "シアターホールAV設備"
+      ],
+      "group": 2
+    },
+    {
+      "name": "祖師谷公園",
+      "systems": [
+        "放送設備整備工事"
+      ],
+      "group": 2
+    },
+    {
+      "name": "東京消防庁",
+      "systems": [
+        "映像編集機器"
+      ],
+      "group": 2
+    },
+    {
+      "name": "東京都北区",
+      "systems": [
+        "中学校、幼稚園、地デジテレビソニー液晶５２インチ１５８台納入"
+      ],
+      "group": 2
+    },
+    {
+      "name": "新宿区生涯学習財団",
+      "systems": [
+        "ITVセキュリティ設備"
+      ],
+      "group": 2
+    },
+    {
+      "name": "日本芸術文化振興会",
+      "systems": [
+        "国立劇場大／小劇場ワイヤレス音響設備・ITV設備"
+      ],
+      "group": 3
+    },
+    {
+      "name": "すこやか食生活改善協会",
+      "systems": [
+        "デジタル録音制作システム"
+      ],
+      "group": 3
+    },
+    {
+      "name": "国立国語研究所",
+      "systems": [
+        "映像音声収録システム"
+      ],
+      "group": 3
+    },
+    {
+      "name": "科学技術振興事業団",
+      "systems": [
+        "LCDデータプロジェクター"
+      ],
+      "group": 3
+    },
+    {
+      "name": "電力中央研究所",
+      "systems": [
+        "会議室映像設備"
+      ],
+      "group": 3
+    },
+    {
+      "name": "横浜市振興事業団",
+      "systems": [
+        "横浜国際プール大型映像システム（ジャンボトロン）"
+      ],
+      "group": 3
+    },
+    {
+      "name": "日本建築学会",
+      "systems": [
+        "ホール音響設備"
+      ],
+      "group": 3
+    },
+    {
+      "name": "NHK放送研修センター",
+      "systems": [
+        "デジタル録音制作システム"
+      ],
+      "group": 3
+    },
+    {
+      "name": "東京国際フォーラム",
+      "systems": [
+        "同時通訳システム",
+        "会議システム"
+      ],
+      "group": 3
+    },
+    {
+      "name": "国立オリンピック記念 青少年総合センター",
+      "systems": [
+        "デジタル・アナログ録音システム"
+      ],
+      "group": 3
+    },
+    {
+      "name": "東京電力",
+      "systems": [
+        "柏崎３Dハイビジョンシアター設備"
+      ],
+      "group": 4
+    },
+    {
+      "name": "日本アイビーエム",
+      "systems": [
+        "研修システム・プレゼンシステム、他"
+      ],
+      "group": 4
+    },
+    {
+      "name": "東芝テック",
+      "systems": [
+        "本社ショールームプレゼンシステム他"
+      ],
+      "group": 4
+    },
+    {
+      "name": "三井住友銀行",
+      "systems": [
+        "広報映像制作編集システム・支店セキュリティーカメラシステム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "共立信用金庫",
+      "systems": [
+        "支店セキュリティーカメラシステム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "日本ストライカー",
+      "systems": [
+        "研修室AVシステム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "リーガルマインド",
+      "systems": [
+        "講義室AV受講システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "シティーバンク",
+      "systems": [
+        "会議室AVシステム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "ジョンソンディバーシー",
+      "systems": [
+        "研修室視聴覚教育システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "東京リーガルマインド",
+      "systems": [
+        "講義AV受講システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "ワークアウトワールド",
+      "systems": [
+        "館内映像・放送・スタジオ音響設備"
+      ],
+      "group": 4
+    },
+    {
+      "name": "住友軽金属工業",
+      "systems": [
+        "テレビ会議システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "日本ウェーブロック",
+      "systems": [
+        "テレビ会議システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "ジョンソン＆ジョンソン",
+      "systems": [
+        "会議室AVシステム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "海上自衛隊",
+      "systems": [
+        "会議室AV施設"
+      ],
+      "group": 4
+    },
+    {
+      "name": "サンシティ",
+      "systems": [
+        "視聴覚システム"
+      ],
+      "group": 4
+    },
+    {
+      "name": "ライオン",
+      "systems": [
+        "食堂ＡＶ設備",
+        "未来ブースＡＶ設備",
+        "プレゼンテーションルームＡＶ設備"
+      ],
+      "group": 4
+    },
+    {
+      "name": "社団法人 日本建築学会",
+      "systems": [
+        "大型ディスプレイ情報表示装置及びAED設置"
+      ],
+      "group": 4
+    },
+    {
+      "name": "日本公認会計士協会",
+      "systems": [
+        "講義室 視聴覚システム"
+      ],
+      "group": 4
+    }
+  ],
+  "makers": [
+    "ソニー株式会社",
+    "ソニービジネスソリューション株式会社",
+    "ソニーマーケティング株式会社",
+    "ＴＯＡ株式会社",
+    "ユニペックス株式会社",
+    "チエル株式会社",
+    "株式会社アンペール",
+    "株式会社内田洋行",
+    "パナソニックコンシューママーケティング株式会社",
+    "パナソニックシステムソリューションズジャパン株式会社",
+    "エルモソリューション販売株式会社",
+    "シャープ株式会社",
+    "シャープエレクトロニクスマーケティング株式会社",
+    "エプソン販売株式会社",
+    "株式会社ワコム",
+    "株式会社ＪＶＣケンウッド",
+    "株式会社オーディオテクニカ",
+    "パイオニア株式会社",
+    "オーロラ（株式会社共栄商事）",
+    "株式会社ケイアイシー",
+    "株式会社オーエス",
+    "株式会社キクチ科学研究所",
+    "ハヤミ工産株式会社",
+    "イメージニクス株式会社",
+    "ダイトエレクトロン株式会社",
+    "東芝ライテック株式会社",
+    "ＤＸアンテナ株式会社",
+    "梅沢技研株式会社",
+    "アイホン株式会社",
+    "日本サムスン株式会社",
+    "トムソン・カーノープス株式会社",
+    "株式会社朋栄",
+    "ログオーディオ株式会社",
+    "日本クレストロン株式会社"
+  ],
+  "screenSeries": [
+    {
+      "code": "BE",
+      "page": "vm2.html",
+      "name": "ケース入り電動スクリーン",
+      "description": "壁スイッチが付属する、プロテクターケース付きの電動スクリーンです。",
+      "features": [
+        "電動式",
+        "プロテクターケース付き",
+        "壁スイッチ付属"
+      ],
+      "sizes": [
+        80,
+        100,
+        120,
+        150,
+        170,
+        200
+      ],
+      "image": "images/screens/be.jpg",
+      "imageSource": "http://www.bex.co.jp/vmbe.jpg",
+      "variants": [
+        {
+          "model": "BE-80",
+          "size": 80,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-80_BEB-80.pdf",
+            "path": "downloads/visual-master/be/be-80.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-80_BEB-80.zip",
+            "path": "downloads/visual-master/be/be-80.zip"
+          }
+        },
+        {
+          "model": "BE-100",
+          "size": 100,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-100_BEB-100.pdf",
+            "path": "downloads/visual-master/be/be-100.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-100_BEB-100.zip",
+            "path": "downloads/visual-master/be/be-100.zip"
+          }
+        },
+        {
+          "model": "BE-120",
+          "size": 120,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-120_BEB-120.pdf",
+            "path": "downloads/visual-master/be/be-120.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-120_BEB-120.zip",
+            "path": "downloads/visual-master/be/be-120.zip"
+          }
+        },
+        {
+          "model": "BE-150",
+          "size": 150,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-150_BEB-150.pdf",
+            "path": "downloads/visual-master/be/be-150.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-150_BEB-150.zip",
+            "path": "downloads/visual-master/be/be-150.zip"
+          }
+        },
+        {
+          "model": "BE-170",
+          "size": 170,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-170_BEB-170.pdf",
+            "path": "downloads/visual-master/be/be-170.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-170_BEB-170.zip",
+            "path": "downloads/visual-master/be/be-170.zip"
+          }
+        },
+        {
+          "model": "BE-200",
+          "size": 200,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-200_BEB-200.pdf",
+            "path": "downloads/visual-master/be/be-200.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BEX_SCREEN/BE/BEW-200_BEB-200.zip",
+            "path": "downloads/visual-master/be/be-200.zip"
+          }
+        },
+        {
+          "model": "BE-80HD",
+          "size": 80,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-80HD_BEB-80HD.pdf",
+            "path": "downloads/visual-master/be/be-80hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-80HD.zip",
+            "path": "downloads/visual-master/be/be-80hd.zip"
+          }
+        },
+        {
+          "model": "BE-100HD",
+          "size": 100,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-100HD_BEB-100HD.pdf",
+            "path": "downloads/visual-master/be/be-100hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-100HD.zip",
+            "path": "downloads/visual-master/be/be-100hd.zip"
+          }
+        },
+        {
+          "model": "BE-120HD",
+          "size": 120,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-120HD_BEB-120HD.pdf",
+            "path": "downloads/visual-master/be/be-120hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-120HD.zip",
+            "path": "downloads/visual-master/be/be-120hd.zip"
+          }
+        },
+        {
+          "model": "BE-150HD",
+          "size": 150,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-150HD_BEB-150HD.pdf",
+            "path": "downloads/visual-master/be/be-150hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-150HD.zip",
+            "path": "downloads/visual-master/be/be-150hd.zip"
+          }
+        },
+        {
+          "model": "BE-170HD",
+          "size": 170,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-170HD_BEB-170HD.pdf",
+            "path": "downloads/visual-master/be/be-170hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-170HD.zip",
+            "path": "downloads/visual-master/be/be-170hd.zip"
+          }
+        },
+        {
+          "model": "BE-200HD",
+          "size": 200,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BEW-200HD_BEB-200HD.pdf",
+            "path": "downloads/visual-master/be/be-200hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BE-200HD.zip",
+            "path": "downloads/visual-master/be/be-200hd.zip"
+          }
+        }
+      ]
+    },
+    {
+      "code": "BA",
+      "page": "vm3.html",
+      "name": "天板式電動スクリーン",
+      "description": "天井埋込ボックスへの設置に適した、天板式の電動スクリーンです。",
+      "features": [
+        "電動式",
+        "天板式",
+        "天井埋込ボックスに対応"
+      ],
+      "sizes": [
+        80,
+        100,
+        120,
+        150,
+        170,
+        200
+      ],
+      "image": "images/screens/ba.jpg",
+      "imageSource": "http://www.bex.co.jp/vmba.jpg",
+      "variants": [
+        {
+          "model": "BA-80",
+          "size": 80,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-80.pdf",
+            "path": "downloads/visual-master/ba/ba-80.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-80.zip",
+            "path": "downloads/visual-master/ba/ba-80.zip"
+          }
+        },
+        {
+          "model": "BA-100",
+          "size": 100,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-100.pdf",
+            "path": "downloads/visual-master/ba/ba-100.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-100.zip",
+            "path": "downloads/visual-master/ba/ba-100.zip"
+          }
+        },
+        {
+          "model": "BA-120",
+          "size": 120,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-120.pdf",
+            "path": "downloads/visual-master/ba/ba-120.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-120.zip",
+            "path": "downloads/visual-master/ba/ba-120.zip"
+          }
+        },
+        {
+          "model": "BA-150",
+          "size": 150,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-150.pdf",
+            "path": "downloads/visual-master/ba/ba-150.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-150.zip",
+            "path": "downloads/visual-master/ba/ba-150.zip"
+          }
+        },
+        {
+          "model": "BA-170",
+          "size": 170,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-170.pdf",
+            "path": "downloads/visual-master/ba/ba-170.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-170.zip",
+            "path": "downloads/visual-master/ba/ba-170.zip"
+          }
+        },
+        {
+          "model": "BA-200",
+          "size": 200,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-200.pdf",
+            "path": "downloads/visual-master/ba/ba-200.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-200.zip",
+            "path": "downloads/visual-master/ba/ba-200.zip"
+          }
+        },
+        {
+          "model": "BA-80HD",
+          "size": 80,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-80HD.pdf",
+            "path": "downloads/visual-master/ba/ba-80hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-80HD.zip",
+            "path": "downloads/visual-master/ba/ba-80hd.zip"
+          }
+        },
+        {
+          "model": "BA-100HD",
+          "size": 100,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-100HD.pdf",
+            "path": "downloads/visual-master/ba/ba-100hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-100HD.zip",
+            "path": "downloads/visual-master/ba/ba-100hd.zip"
+          }
+        },
+        {
+          "model": "BA-120HD",
+          "size": 120,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-120HD.pdf",
+            "path": "downloads/visual-master/ba/ba-120hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-120HD.zip",
+            "path": "downloads/visual-master/ba/ba-120hd.zip"
+          }
+        },
+        {
+          "model": "BA-150HD",
+          "size": 150,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-150HD.pdf",
+            "path": "downloads/visual-master/ba/ba-150hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-150HD.zip",
+            "path": "downloads/visual-master/ba/ba-150hd.zip"
+          }
+        },
+        {
+          "model": "BA-170HD",
+          "size": 170,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-170HD.pdf",
+            "path": "downloads/visual-master/ba/ba-170hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-170HD.zip",
+            "path": "downloads/visual-master/ba/ba-170hd.zip"
+          }
+        },
+        {
+          "model": "BA-200HD",
+          "size": 200,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BA-200HD.pdf",
+            "path": "downloads/visual-master/ba/ba-200hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BA-200HD.zip",
+            "path": "downloads/visual-master/ba/ba-200hd.zip"
+          }
+        }
+      ]
+    },
+    {
+      "code": "BS",
+      "page": "vm4.html",
+      "name": "ケース入り手動スクリーン",
+      "description": "アルミプロテクターケースを備えた、手動式のスクリーンです。",
+      "features": [
+        "手動式",
+        "アルミプロテクターケース付き"
+      ],
+      "sizes": [
+        80,
+        100,
+        120,
+        150,
+        170
+      ],
+      "image": "images/screens/bs.jpg",
+      "imageSource": "http://www.bex.co.jp/vmbs.jpg",
+      "variants": [
+        {
+          "model": "BS-80",
+          "size": 80,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-80.pdf",
+            "path": "downloads/visual-master/bs/bs-80.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-80.zip",
+            "path": "downloads/visual-master/bs/bs-80.zip"
+          }
+        },
+        {
+          "model": "BS-100",
+          "size": 100,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-100.pdf",
+            "path": "downloads/visual-master/bs/bs-100.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-100.zip",
+            "path": "downloads/visual-master/bs/bs-100.zip"
+          }
+        },
+        {
+          "model": "BS-120",
+          "size": 120,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-120.pdf",
+            "path": "downloads/visual-master/bs/bs-120.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-120.zip",
+            "path": "downloads/visual-master/bs/bs-120.zip"
+          }
+        },
+        {
+          "model": "BS-150",
+          "size": 150,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-150.pdf",
+            "path": "downloads/visual-master/bs/bs-150.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-150.zip",
+            "path": "downloads/visual-master/bs/bs-150.zip"
+          }
+        },
+        {
+          "model": "BS-170",
+          "size": 170,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-170.pdf",
+            "path": "downloads/visual-master/bs/bs-170.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-170.zip",
+            "path": "downloads/visual-master/bs/bs-170.zip"
+          }
+        },
+        {
+          "model": "BS-80HD",
+          "size": 80,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-80HD.pdf",
+            "path": "downloads/visual-master/bs/bs-80hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-80HD.zip",
+            "path": "downloads/visual-master/bs/bs-80hd.zip"
+          }
+        },
+        {
+          "model": "BS-100HD",
+          "size": 100,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-100HD.pdf",
+            "path": "downloads/visual-master/bs/bs-100hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-100HD.zip",
+            "path": "downloads/visual-master/bs/bs-100hd.zip"
+          }
+        },
+        {
+          "model": "BS-120HD",
+          "size": 120,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-120HD.pdf",
+            "path": "downloads/visual-master/bs/bs-120hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-120HD.zip",
+            "path": "downloads/visual-master/bs/bs-120hd.zip"
+          }
+        },
+        {
+          "model": "BS-150HD",
+          "size": 150,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-150HD.pdf",
+            "path": "downloads/visual-master/bs/bs-150hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-150HD.zip",
+            "path": "downloads/visual-master/bs/bs-150hd.zip"
+          }
+        },
+        {
+          "model": "BS-170HD",
+          "size": 170,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BS-170HD.pdf",
+            "path": "downloads/visual-master/bs/bs-170hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BS-170HD.zip",
+            "path": "downloads/visual-master/bs/bs-170hd.zip"
+          }
+        }
+      ]
+    },
+    {
+      "code": "BL",
+      "page": "vm5.html",
+      "name": "天板式手動スクリーン",
+      "description": "天井埋込ボックスへの設置に適した、天板式の手動スクリーンです。",
+      "features": [
+        "手動式",
+        "天板式",
+        "天井埋込ボックスに対応"
+      ],
+      "sizes": [
+        80,
+        100,
+        120,
+        150,
+        170
+      ],
+      "image": "images/screens/bl.jpg",
+      "imageSource": "http://www.bex.co.jp/vmbl.jpg",
+      "variants": [
+        {
+          "model": "BL-80",
+          "size": 80,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-80.pdf",
+            "path": "downloads/visual-master/bl/bl-80.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-80.zip",
+            "path": "downloads/visual-master/bl/bl-80.zip"
+          }
+        },
+        {
+          "model": "BL-100",
+          "size": 100,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-100.pdf",
+            "path": "downloads/visual-master/bl/bl-100.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-100.zip",
+            "path": "downloads/visual-master/bl/bl-100.zip"
+          }
+        },
+        {
+          "model": "BL-120",
+          "size": 120,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-120.pdf",
+            "path": "downloads/visual-master/bl/bl-120.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-120.zip",
+            "path": "downloads/visual-master/bl/bl-120.zip"
+          }
+        },
+        {
+          "model": "BL-150",
+          "size": 150,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-150.pdf",
+            "path": "downloads/visual-master/bl/bl-150.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-150.zip",
+            "path": "downloads/visual-master/bl/bl-150.zip"
+          }
+        },
+        {
+          "model": "BL-170",
+          "size": 170,
+          "ratio": "4:3",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-170.pdf",
+            "path": "downloads/visual-master/bl/bl-170.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-170.zip",
+            "path": "downloads/visual-master/bl/bl-170.zip"
+          }
+        },
+        {
+          "model": "BL-80HD",
+          "size": 80,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-80HD.pdf",
+            "path": "downloads/visual-master/bl/bl-80hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-80HD.zip",
+            "path": "downloads/visual-master/bl/bl-80hd.zip"
+          }
+        },
+        {
+          "model": "BL-100HD",
+          "size": 100,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-100HD.pdf",
+            "path": "downloads/visual-master/bl/bl-100hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-100HD.zip",
+            "path": "downloads/visual-master/bl/bl-100hd.zip"
+          }
+        },
+        {
+          "model": "BL-120HD",
+          "size": 120,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-120HD.pdf",
+            "path": "downloads/visual-master/bl/bl-120hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-120HD.zip",
+            "path": "downloads/visual-master/bl/bl-120hd.zip"
+          }
+        },
+        {
+          "model": "BL-150HD",
+          "size": 150,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-150HD.pdf",
+            "path": "downloads/visual-master/bl/bl-150hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-150HD.zip",
+            "path": "downloads/visual-master/bl/bl-150hd.zip"
+          }
+        },
+        {
+          "model": "BL-170HD",
+          "size": 170,
+          "ratio": "16:9",
+          "pdf": {
+            "source": "http://www.bex.co.jp/BL-170HD.pdf",
+            "path": "downloads/visual-master/bl/bl-170hd.pdf"
+          },
+          "dxf": {
+            "source": "http://www.bex.co.jp/BL-170HD.zip",
+            "path": "downloads/visual-master/bl/bl-170hd.zip"
+          }
+        }
+      ]
+    }
+  ]
+}
