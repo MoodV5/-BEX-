@@ -185,8 +185,11 @@ function syncSitemap() {
     const newFiles = ['concept_3.html', 'concept_4.html', ...data.screenSeries.map(series => series.page)];
     for (const file of ['index.html', 'concept.html', 'eizoonkyo.html', 'vm1.html', ...newFiles]) {
         const url = file === 'index.html' ? origin : origin + file;
-        const entry = `  <url>\n    <loc>${url}</loc>\n    <lastmod>${data.sourceDate}</lastmod>\n  </url>`;
         const existing = new RegExp(`  <url>\\s*<loc>${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>[\\s\\S]*?</url>`);
+        // A later editorial review must not be dated back to the source migration.
+        const previousDate = sitemap.match(existing)?.[0].match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1];
+        const updatedDate = previousDate && previousDate > data.sourceDate ? previousDate : data.sourceDate;
+        const entry = `  <url>\n    <loc>${url}</loc>\n    <lastmod>${updatedDate}</lastmod>\n  </url>`;
         sitemap = existing.test(sitemap) ? sitemap.replace(existing, () => entry) : sitemap.replace('</urlset>', `${entry}\n</urlset>`);
     }
     writeFileSync(path, sitemap);
