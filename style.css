@@ -588,15 +588,38 @@ h4 {
 ========================================= */
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
 }
 
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
     gap: 3rem;
     align-items: center;
+}
+
+.service-grid {
+    --service-card-min: 250px;
+    --service-card-padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--service-card-min)), 1fr));
+    gap: 1.5rem;
+}
+
+.service-grid--wide {
+    --service-card-min: 300px;
+    --service-card-padding: 2rem;
+}
+
+.service-grid__card {
+    padding: var(--service-card-padding);
+}
+
+.grid-3 > *,
+.grid-2 > *,
+.service-grid > * {
+    min-width: 0;
 }
 
 .feature-card {
@@ -2055,6 +2078,10 @@ body:not(.home-page) .section-title {
         right: 0;
         left: 0;
         display: none;
+        max-height: calc(100vh - 76px);
+        max-height: calc(100dvh - 76px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
         align-items: stretch;
         padding: 16px 20px 24px;
         background: #fff;
@@ -2188,6 +2215,28 @@ body:not(.home-page) .section-title {
 }
 
 @media (max-width: 600px) {
+    /* Keep nested detail-page panels readable on narrow phones. */
+    body:not(.home-page) .main-content {
+        padding: 64px 16px;
+    }
+
+    body:not(.home-page) .content-card,
+    .contact-container {
+        padding: 24px 16px;
+        min-width: 0;
+    }
+
+    .service-panel,
+    body:not(.home-page) .feature-card {
+        padding: 20px 16px;
+        min-width: 0;
+    }
+
+    .service-grid,
+    .service-grid--wide {
+        --service-card-padding: 1rem;
+    }
+
     .section-shell,
     .footer-inner,
     .footer-bottom {
