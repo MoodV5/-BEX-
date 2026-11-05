@@ -1,0 +1,2 @@
+# PHP's local require is not an HTTP request and remains available.
+Require all denied

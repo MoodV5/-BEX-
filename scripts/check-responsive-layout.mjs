@@ -13,6 +13,9 @@ const { chromium } = await import(process.env.BEX_PLAYWRIGHT_MODULE || 'playwrig
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const files = readdirSync(root).filter(file => file.endsWith('.html'));
 const screenshots = process.env.BEX_RESPONSIVE_SCREENSHOTS;
+// Test the actual policy's browser compatibility, not just unprotected HTML.
+// This does NOT emulate or validate Apache routing/access-control directives.
+const csp = readFileSync(join(root, '.htaccess'), 'utf8').match(/Header always set Content-Security-Policy "([^"]+)"/)[1];
 if (screenshots) await mkdir(screenshots, { recursive: true });
 const mime = {
     '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -32,7 +35,10 @@ const server = createServer((request, response) => {
         response.writeHead(404).end();
         return;
     }
-    response.writeHead(200, { 'Content-Type': mime[extname(path)] }).end(readFileSync(path));
+    response.writeHead(200, {
+        'Content-Type': mime[extname(path)],
+        ...(extname(path) === '.html' ? { 'Content-Security-Policy': csp, 'X-Frame-Options': 'DENY' } : {}),
+    }).end(readFileSync(path));
 });
 await new Promise(resolveListen => server.listen(0, '127.0.0.1', resolveListen));
 let browser;
@@ -41,6 +47,10 @@ try {
     const context = await browser.newContext({ reducedMotion: 'reduce' });
     const page = await context.newPage();
     const errors = [];
+    const policyErrors = [];
+    page.on('console', message => {
+        if (/violates.*(?:Content Security Policy|directive)|Refused to.*(?:script|style|font|image)/i.test(message.text())) policyErrors.push(message.text());
+    });
     await page.route('https://fonts.googleapis.com/**', route => route.fulfill({ status: 200, contentType: 'text/css', body: '' }));
     await page.route('https://fonts.gstatic.com/**', route => route.fulfill({ status: 200, body: '' }));
     page.on('pageerror', error => {
@@ -83,6 +93,33 @@ try {
             }
         }
     }
+    assert.deepEqual(policyErrors, [], 'Normal pages must not violate CSP');
+    await page.goto(base);
+    const injectionBlocked = await page.evaluate(async () => {
+        window.bexInjected = false;
+        const script = document.createElement('script');
+        script.textContent = 'window.bexInjected = true';
+        document.body.append(script);
+        await new Promise(resolveWait => setTimeout(resolveWait, 30));
+        return window.bexInjected === false;
+    });
+    assert.ok(injectionBlocked, 'CSP blocks injected inline scripts');
+    // Intercept even a regressed request: this negative test never leaves localhost.
+    await page.route('https://csp-test.invalid/**', route => route.abort());
+    const exfiltrationBlocked = await page.evaluate(async () => {
+        const violation = new Promise(resolveViolation => {
+            document.addEventListener('securitypolicyviolation', event => {
+                if (event.effectiveDirective === 'form-action') resolveViolation(true);
+            });
+        });
+        const form = document.createElement('form');
+        form.action = 'https://csp-test.invalid/';
+        form.method = 'post';
+        document.body.append(form);
+        form.submit();
+        return Promise.race([violation, new Promise(resolveWait => setTimeout(() => resolveWait(false), 500))]);
+    });
+    assert.ok(exfiltrationBlocked, 'CSP blocks cross-origin form submission');
     for (const viewport of [{ width: 568, height: 320 }, { width: 844, height: 390 }]) {
         await page.setViewportSize(viewport);
         await page.goto(base + 'system.html');
@@ -101,7 +138,7 @@ try {
     assert.notEqual(await page.locator('.feature-card').first().evaluate(node => getComputedStyle(node).transform), 'none', 'Card hover is preserved');
     assert.equal(await page.locator('.feature-card').first().evaluate(node => getComputedStyle(node).borderRadius), '4px');
     assert.deepEqual(errors, [], 'No application JavaScript errors');
-    console.log(`PASS ${files.length} pages x ${viewports.length} viewports = ${checks} layout checks; landscape menus, card hover and 4px corners verified. No email sent.`);
+    console.log(`PASS ${files.length} pages x ${viewports.length} viewports = ${checks} layout checks under CSP; inline-script injection and external form submission blocked; landscape menus, card hover and 4px corners verified. No email sent.`);
 } finally {
     if (browser) await browser.close();
     server.closeAllConnections();

@@ -8,8 +8,16 @@ const BEX_SUCCESS = 'お問い合わせを送信しました。内容を確認�
 const BEX_UNAVAILABLE = '現在フォームから送信できません。時間をおいてお試しいただくか、ページ下部の連絡先へお問い合わせください。';
 
 header('Cache-Control: no-store, max-age=0');
+header_remove('X-Powered-By');
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+ini_set('log_errors', '1');
 header('X-Content-Type-Options: nosniff');
-header('X-Frame-Options: SAMEORIGIN');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+header('Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()');
+header("Content-Security-Policy: default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'");
+header('X-Robots-Tag: noindex, follow');
 
 function bexEscape(string $value): string
 {
@@ -69,8 +77,45 @@ function bexReply(int $status, string $message, array $errors = [], array $value
 function bexOutsidePublic(string $path): bool
 {
     $resolved = realpath($path);
-    $root = str_replace('\\', '/', (string) realpath(__DIR__)) . '/';
-    return $resolved !== false && stripos(str_replace('\\', '/', $resolved) . '/', $root) !== 0;
+    if ($resolved === false) {
+        return false;
+    }
+    // Also protect installations in a subdirectory of the actual document root.
+    $candidate = str_replace('\\', '/', $resolved) . '/';
+    foreach ([__DIR__, $_SERVER['DOCUMENT_ROOT'] ?? __DIR__] as $publicRoot) {
+        $root = realpath($publicRoot);
+        // Some Windows environments resolve a file but not its parent directory.
+        // Only this script's known directory has a safe canonical fallback.
+        if ($root === false && rtrim(str_replace('\\', '/', $publicRoot), '/') === str_replace('\\', '/', __DIR__)) {
+            $root = dirname(realpath(__FILE__) ?: __FILE__);
+        }
+        if ($root === false || stripos($candidate, str_replace('\\', '/', $root) . '/') === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Reject malformed traffic before allocating a session or connecting to SMTP.
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+if (!in_array($method, ['GET', 'POST'], true)) {
+    header('Allow: GET, POST');
+    bexReply(405, 'この操作には対応していません。');
+}
+if ($method === 'POST') {
+    if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 65536) {
+        bexReply(413, '入力内容が長すぎます。お問い合わせ内容を短くしてお試しください。');
+    }
+    if (($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') {
+        bexReply(403, '送信元を確認できませんでした。フォームを再読み込みしてください。');
+    }
+    $contentType = strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0]));
+    if (!in_array($contentType, ['application/x-www-form-urlencoded', 'multipart/form-data'], true)) {
+        bexReply(415, 'お問い合わせフォームから送信してください。');
+    }
+    if (!empty($_FILES)) {
+        bexReply(422, 'このフォームではファイルを添付できません。');
+    }
 }
 
 // The only configurable file path is a server environment variable, never request data.
@@ -102,6 +147,13 @@ try {
     if ($config['smtp_password'] === '' || !extension_loaded('openssl')) {
         bexReply(503, BEX_UNAVAILABLE);
     }
+    if (($method === 'POST' || ($_GET['action'] ?? '') === 'token')
+        && isset($_SERVER['HTTP_ORIGIN']) && !in_array($_SERVER['HTTP_ORIGIN'], $config['allowed_origins'], true)) {
+        bexReply(403, '送信元を確認できませんでした。フォームを再読み込みしてください。');
+    }
+    if (($_GET['action'] ?? '') === 'token' && ($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') {
+        bexReply(403, '送信元を確認できませんでした。フォームを再読み込みしてください。');
+    }
     session_name('bex_contact');
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
@@ -115,7 +167,6 @@ try {
     bexReply(503, BEX_UNAVAILABLE);
 }
 
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method === 'GET') {
     if (($_GET['action'] ?? '') === 'token') {
         bexReply(200, '');
@@ -123,16 +174,6 @@ if ($method === 'GET') {
     $flash = $_SESSION['contact_sent'] ?? false;
     unset($_SESSION['contact_sent']);
     bexReply(200, $flash ? BEX_SUCCESS : '');
-}
-if ($method !== 'POST') {
-    header('Allow: GET, POST');
-    bexReply(405, 'この操作には対応していません。');
-}
-if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 65536) {
-    bexReply(413, '入力内容が長すぎます。お問い合わせ内容を短くしてお試しください。');
-}
-if (isset($_SERVER['HTTP_ORIGIN']) && !in_array($_SERVER['HTTP_ORIGIN'], $config['allowed_origins'], true)) {
-    bexReply(403, '送信元を確認できませんでした。フォームを再読み込みしてください。');
 }
 $submittedToken = $_POST['_token'] ?? '';
 if (!is_string($submittedToken) || !preg_match('/^[a-f0-9]{64}$/D', $submittedToken)) {
@@ -197,7 +238,10 @@ try {
     if ($handle === false || !flock($handle, LOCK_EX)) {
         throw new RuntimeException('Rate limit unavailable.');
     }
-    $history = json_decode(stream_get_contents($handle), true);
+    if (!chmod($rateFile, 0600)) {
+        throw new RuntimeException('State permissions could not be set.');
+    }
+    $history = json_decode(stream_get_contents($handle, 8192), true);
     $now = time();
     $history = array_values(array_filter(is_array($history) ? $history : [], function ($timestamp) use ($now): bool { return is_int($timestamp) && $timestamp > $now - 3600; }));
     $last = $history ? $history[count($history) - 1] : 0;

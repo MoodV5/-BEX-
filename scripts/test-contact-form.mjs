@@ -107,12 +107,31 @@ try {
     check(client.token.length === 64, 'Session token');
     const tokenResponse = await fetch(`${base}/contact.php?action=token`, { headers: { Cookie: client.cookie } });
     check(tokenResponse.headers.get('cache-control').includes('no-store'), 'No token caching');
+    check(tokenResponse.headers.get('x-frame-options') === 'DENY', 'Embedding denied');
+    check(tokenResponse.headers.get('x-content-type-options') === 'nosniff', 'MIME sniffing disabled');
+    check(tokenResponse.headers.get('referrer-policy') === 'strict-origin-when-cross-origin', 'Referrer policy');
+    check(tokenResponse.headers.get('content-security-policy').includes("script-src 'self';"), 'Restrictive script CSP');
+    check(!tokenResponse.headers.has('x-powered-by'), 'PHP version not disclosed');
+    check(tokenResponse.headers.get('permissions-policy').includes('camera=()'), 'Unused device permissions disabled');
+    check(tokenResponse.headers.get('x-robots-tag') === 'noindex, follow', 'Token endpoint is not indexed');
     const cookieResponse = await fetch(`${base}/contact.php?action=token`);
     check(/HttpOnly/i.test(cookieResponse.headers.get('set-cookie')) && /SameSite=Lax/i.test(cookieResponse.headers.get('set-cookie')), 'Cookie attributes');
     check((await post(client, { _token: '' })).response.status === 403, 'Missing CSRF');
     const expiredHtml = await post(client, { _token: '' }, {}, true);
     check(expiredHtml.response.status === 403 && expiredHtml.body.includes(valid.name), 'No-JS preserves input on token failure');
     check((await post(client, {}, { Origin: 'https://attacker.example' })).response.status === 403, 'Cross-origin blocked');
+    check((await post(client, {}, { 'Sec-Fetch-Site': 'cross-site' })).response.status === 403, 'Cross-site Fetch Metadata blocked');
+    const crossToken = await fetch(`${base}/contact.php?action=token`, { headers: { Origin: 'https://attacker.example', Accept: 'application/json' } });
+    check(crossToken.status === 403 && !(await crossToken.json()).token && !crossToken.headers.has('set-cookie'), 'Cross-origin token request rejected before session');
+    const unsupportedMethod = await fetch(`${base}/contact.php`, { method: 'PUT', headers: { Accept: 'application/json' } });
+    check(unsupportedMethod.status === 405 && unsupportedMethod.headers.get('allow') === 'GET, POST' && !unsupportedMethod.headers.has('set-cookie'), 'Unsupported method rejected before session');
+    const jsonPost = await fetch(`${base}/contact.php`, { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(valid) });
+    check(jsonPost.status === 415 && !jsonPost.headers.has('set-cookie'), 'Unsupported JSON submission rejected');
+    const upload = new FormData();
+    for (const [name, value] of Object.entries({ ...valid, _token: client.token })) upload.set(name, value);
+    upload.set('attachment', new Blob(['dummy file, not executed'], { type: 'text/plain' }), 'test.txt');
+    const uploadResponse = await fetch(`${base}/contact.php`, { method: 'POST', headers: { Cookie: client.cookie, Accept: 'application/json' }, body: upload });
+    check(uploadResponse.status === 422, 'Unexpected file upload rejected');
     for (const fields of [{ name: '' }, { message: '' }, { email: 'bad' }, { email: 'a@example.org\r\nBcc:other@example.org' }, { name: 'あ'.repeat(101) }, { message: 'あ'.repeat(5001) }, { website: 'spam' }, { email: undefined, 'email[]': 'visitor@example.org' }]) {
         check((await post(client, fields)).response.status === 422, 'Invalid input rejected');
     }
@@ -120,6 +139,7 @@ try {
     const fallback = await fetch(`${base}/contact.php`, { headers: { Cookie: client.cookie } }).then(response => response.text());
     check(fallback.includes(`value="${client.token}"`) && !fallback.includes('<noscript>'), 'No-JS form token');
     check(!fallback.includes('local-dummy-only'), 'Password never exposed');
+    check(messages.length === 0, 'Rejected requests never reach SMTP');
     const invalidHtml = await post(client, { company: '"><script>alert(1)</script>', name: '' }, {}, true);
     check(invalidHtml.response.status === 422 && invalidHtml.body.includes('&lt;script&gt;') && !invalidHtml.body.includes('value=""><script>'), 'HTML fallback escapes preserved fields');
     const delivered = await post(client, { to_email: 'attacker@example.org', from_email: 'attacker@example.org' });
@@ -139,6 +159,10 @@ try {
     check((await post(client)).response.status === 503 && messages.length === 1, 'Untrusted TLS certificate blocks delivery');
     await configure({ hourly_limit: 1 });
     check((await post(await session())).response.status === 429, 'Rate limit across new sessions');
+    check((await post(await session(), {}, { 'X-Forwarded-For': '198.51.100.123', 'X-Real-IP': '198.51.100.124' })).response.status === 429, 'Forged proxy headers cannot bypass rate limit');
+    await configure({ state_dir: join(root, 'images') });
+    const publicStateResult = await post(await session());
+    check(publicStateResult.response.status === 503, `Public state directory is rejected (HTTP ${publicStateResult.response.status})`);
     await configure({ smtp_password: '' });
     check((await fetch(`${base}/contact.php?action=token`)).status === 503, 'Missing secret fails closed');
     await configure({ require_https: true });
@@ -162,6 +186,8 @@ try {
         try {
             const page = await browser.newPage();
             const errors = [];
+            await page.route('https://fonts.googleapis.com/**', route => route.fulfill({ status: 200, contentType: 'text/css', body: '' }));
+            await page.route('https://fonts.gstatic.com/**', route => route.fulfill({ status: 200, body: '' }));
             page.on('pageerror', error => errors.push(error.message));
             await page.goto(`${base}/contact.html`);
             await page.locator('[data-contact-submit]').waitFor({ state: 'visible' });
@@ -186,6 +212,9 @@ try {
                 await page.screenshot({ path: join(directory, `contact-${width}.png`) });
             }
             check(errors.length === 0, 'No browser JavaScript errors');
+            await page.goto(`${base}/contact.php`);
+            await page.waitForFunction(() => !document.querySelector('[data-contact-submit]').disabled);
+            check(await page.locator('[data-contact-form]').isVisible(), 'Server-rendered form works with enforced CSP');
             const noJsContext = await browser.newContext({ javaScriptEnabled: false });
             const noJsPage = await noJsContext.newPage();
             await noJsPage.goto(`${base}/contact.html`);

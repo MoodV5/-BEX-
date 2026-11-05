@@ -1,0 +1,35 @@
+# Apache 2.4: merge with existing hosting/WordPress rules; do not overwrite them.
+# Plesk nginx may serve static files without Apache. See deployment/SECURITY.md.
+Options -Indexes -MultiViews
+
+RewriteEngine On
+# Keep ACME certificate validation reachable, but deny other hidden paths.
+RewriteRule "(^|/)\.(?!well-known(?:/|$))" - [F,END,NC]
+RewriteRule "^(?:data|deployment|docs|partials|scripts|lib|bex-private|form-state|secrets|credentials|node_modules|vendor|dist|build|tmp|temp|backup|backups|coverage|test-results|playwright-report)(?:/|$)" - [F,END,NC]
+
+<FilesMatch "(?i)(?:^contact-config(?:\..*)?\.php$|\.(?:md|log|ini|env|sql|sqlite3?|bak|backup|orig|old|tmp|temp|key|pem|p12|pfx|phps|map)(?:\.(?:gz|zip))?$|~$|^(?:composer\.(?:json|lock)|package(?:-lock)?\.json|phpunit\.xml|error_log)$)">
+    Require all denied
+</FilesMatch>
+
+<Files "contact.php">
+    LimitRequestBody 65536
+</Files>
+
+# Limit document policies to this site's pages, not wp-admin or WordPress PHP.
+<IfModule mod_headers.c>
+    <FilesMatch "(?i)\.(?:html|css|js|php)$">
+        Header always set X-Content-Type-Options "nosniff"
+    </FilesMatch>
+    <FilesMatch "(?i)^(?:(?:index|bousai|concept(?:_[34])?|consumer|contact|eizoonkyo|hosyu|ippan|jyohotsushin|kyouiku|office|order|privacy|system|vm[1-5])\.html|contact\.php)$">
+        Header always set X-Frame-Options "DENY"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+        Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'"
+        Header always unset X-Powered-By
+        Header unset X-Powered-By
+    </FilesMatch>
+    <Files "contact.php">
+        Header always set Cache-Control "no-store, max-age=0"
+        Header always set X-Robots-Tag "noindex, follow"
+    </Files>
+</IfModule>

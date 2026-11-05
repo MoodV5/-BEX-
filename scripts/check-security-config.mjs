@@ -1,0 +1,31 @@
+// Offline guardrails, NOT an Apache syntax check or a penetration test.
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { collectPublicFiles } from './prepare-public-release.mjs';
+
+const root = new URL('../', import.meta.url);
+const apache = await readFile(new URL('.htaccess', root), 'utf8');
+const php = await readFile(new URL('contact.php', root), 'utf8');
+const csp = apache.match(/Header always set Content-Security-Policy "([^"]+)"/)[1];
+assert(php.includes(`header("Content-Security-Policy: ${csp}");`), 'PHP and Apache CSP must match');
+assert(!/script-src[^;]*'unsafe-(?:inline|eval)'/.test(csp), 'Do not enable unsafe inline/eval scripts');
+assert(csp.includes("form-action 'self'") && csp.includes("frame-ancestors 'none'"));
+assert(/Options -Indexes -MultiViews/.test(apache));
+assert(/<Files "contact.php">\s+LimitRequestBody 65536/.test(apache));
+const denyPaths = [...apache.matchAll(/RewriteRule "([^"]+)" - \[F,END,NC\]/g)].map(match => new RegExp(match[1], 'i'));
+const filePatterns = [...apache.matchAll(/<FilesMatch "([^"]+)">\s+Require all denied/g)].map(match => new RegExp(match[1].replace(/^\(\?i\)/, ''), 'i'));
+const denied = path => denyPaths.some(pattern => pattern.test(path)) || filePatterns.some(pattern => pattern.test(path.split('/').at(-1)));
+const protectedPaths = ['.git/config', '.git/HEAD', '.env', '.env.production', '.aws/credentials', 'images/.env', 'contact-config.php', 'contact-config.local.php', 'contact.php.bak', 'contact.php~', 'backup/db.sql.gz', 'form-state/dummy.json', 'bex-private/contact-config.php', 'data/reference-content.json', 'deployment/contact-config.example.php', 'scripts/test-contact-form.mjs', 'lib/phpmailer/src/SMTP.php', 'dist/public/index.html', 'secrets/password.txt', 'credentials/smtp.json', 'SITE-CONSISTENCY-NOTES.md', 'CONTACT-FORM-SETUP.md', 'composer.lock', 'package-lock.json', 'error_log', 'error.log', 'site.sqlite3', 'server.key', 'partials/header.html', 'docs/MAINTENANCE.md', 'package.json'];
+for (const path of protectedPaths) assert(denied(path), `Must deny: ${path}`);
+const files = await collectPublicFiles();
+const pages = files.filter(path => path.endsWith('.html'));
+const documentPolicy = new RegExp(apache.match(/<FilesMatch "([^"]+)">\s+Header always set X-Frame-Options/)[1].replace(/^\(\?i\)/, ''), 'i');
+for (const page of [...pages, 'contact.php']) assert(documentPolicy.test(page), `Page policy: ${page}`);
+assert(!documentPolicy.test('index.php') && !documentPolicy.test('wp-login.php'), 'Do not add this CSP to WordPress PHP');
+for (const file of [...files.filter(path => !path.startsWith('lib/') && path !== '.htaccess'), '.well-known/acme-challenge/test-token']) assert(!denied(file), `Must not deny: ${file}`);
+for (const directory of ['data', 'deployment', 'docs', 'partials', 'scripts', 'lib']) assert((await readFile(new URL(`${directory}/.htaccess`, root), 'utf8')).includes('Require all denied'));
+for (const file of files) assert(!/^(?:data|deployment|docs|partials|scripts|bex-private|\.git)\//.test(file) && !/contact-config/.test(file), `Non-public release file: ${file}`);
+assert.equal(files.filter(path => /\.(?:pdf|zip)$/.test(path)).length, 88, 'Keep all 88 published drawing files');
+const example = await readFile(new URL('deployment/contact-config.example.php', root), 'utf8');
+assert(/'smtp_password'\s*=>\s*''/.test(example), 'Example must contain no password');
+console.log(`PASS offline security guardrails: ${protectedPaths.length} blocked paths, ${pages.length} pages, ${files.length} release files including 88 public drawings. Apache/nginx enforcement still requires server verification.`);

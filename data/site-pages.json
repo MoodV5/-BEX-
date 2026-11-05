@@ -1,0 +1,23 @@
+[
+  { "file": "index.html", "title": "ホーム", "generated": false },
+  { "file": "eizoonkyo.html", "title": "映像・音響・表示", "generated": false },
+  { "file": "ippan.html", "title": "監視・安全・防災", "generated": false },
+  { "file": "bousai.html", "title": "防災用品", "generated": false },
+  { "file": "kyouiku.html", "title": "教育・学校設備", "generated": false },
+  { "file": "jyohotsushin.html", "title": "情報通信・ICT・ネットワーク", "generated": false },
+  { "file": "hosyu.html", "title": "設備更新・保守", "generated": false },
+  { "file": "order.html", "title": "調達・レンタル・特注", "generated": false },
+  { "file": "office.html", "title": "オフィス家具", "generated": false },
+  { "file": "consumer.html", "title": "家電・AV機器", "generated": false },
+  { "file": "concept.html", "title": "会社情報", "generated": false },
+  { "file": "system.html", "title": "システムソリューション", "generated": false },
+  { "file": "concept_3.html", "title": "納入実績", "generated": true },
+  { "file": "concept_4.html", "title": "取引先メーカー", "generated": true },
+  { "file": "vm1.html", "title": "Visual Master・スクリーン一覧", "generated": false },
+  { "file": "vm2.html", "title": "BEシリーズ・図面", "generated": true },
+  { "file": "vm3.html", "title": "BAシリーズ・図面", "generated": true },
+  { "file": "vm4.html", "title": "BSシリーズ・図面", "generated": true },
+  { "file": "vm5.html", "title": "BLシリーズ・図面", "generated": true },
+  { "file": "privacy.html", "title": "個人情報保護方針", "generated": false },
+  { "file": "contact.html", "title": "お問い合わせ", "generated": false }
+]

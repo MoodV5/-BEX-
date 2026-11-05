@@ -1,0 +1,15 @@
+{
+  "name": "bex-corporate-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "株式会社ベックス Webサイトのローカル管理コマンド。自動公開・メール送信はしません。",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "generate": "node scripts/build-reference-pages.mjs",
+    "check": "node scripts/build-reference-pages.mjs --check && node scripts/check-maintenance.mjs && node scripts/check-publication-content.mjs && node scripts/check-security-config.mjs && node --test scripts/test-maintenance.mjs",
+    "preview": "node scripts/preview.mjs",
+    "build": "npm run check && node scripts/prepare-public-release.mjs",
+    "test:layout": "node scripts/check-responsive-layout.mjs",
+    "test:contact": "node scripts/test-contact-form.mjs"
+  }
+}
